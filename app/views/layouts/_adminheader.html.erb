@@ -1,0 +1,42 @@
+<style>
+	ul{
+		list-style: none;
+	}
+
+	#side-menu{
+		width:350px;
+		min-height:900px;
+		height:auto;
+		float:left;
+	}
+	p{
+		text-align: center;
+		color: #808080;
+		margin: 30px;
+	}
+</style>
+
+<div class="side-menu">
+	<% if admin_signed_in? %>
+	<%= link_to admins_path do %>
+		<img src="/assets/logo.jpg" style="height:100px; display:block; margin: 0 auto;">
+	<% end %>
+	<div>
+		<%=link_to admins_products_path do %>
+			<p>商品一覧</p>
+		<% end %>
+		<%=link_to admins_users_path do %>
+			<P>Member</P>
+		<% end %>
+		<%=link_to  admins_orders_path do %>
+			<p>Order history</p>
+		<% end %>
+		<%=link_to admins_genres_path do %>
+			<p>Genre</p>
+		<% end %>
+		<%=link_to destroy_admin_session_path, method: :delete do %>
+			<p>logout</p>
+		<% end %>
+	<% end %>
+</div>
+</div>

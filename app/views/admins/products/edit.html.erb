@@ -1,2 +1,20 @@
-<h1>Admins::Products#edit</h1>
-<p>Find me in app/views/admins/products/edit.html.erb</p>
+<div>
+	<%= render "layouts/adminheader"%>
+	<h1>Product edit screen</h1>
+	<%= form_for @product, url: admins_product_path, method: :patch do |f| %>
+	<%= attachment_image_tag @product, :image, :fill, 50, 50 %>
+	<%= f.label :image %>
+	<%= f.attachment_field :image %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	<%= f.label :introduction %>
+	<%= f.text_field :introduction %>
+	<%= f.label :genre %>
+	<%= f.collection_select :genre_id, Genre.where(is_disable: false), :id, :name %>
+	<%= f.label :price %>
+	<%= f.text_field :price %>
+	<%= f.label :is_stopped %>
+	<%= f.select :is_stopped, {Sale:false,Suspended_sales:true} %>
+	<%= f.submit "Register" %>
+	<% end %>
+</div>

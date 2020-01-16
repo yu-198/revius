@@ -1,0 +1,47 @@
+<style>
+	ul{
+		list-style: none;
+	}
+
+	#side-menu{
+		width:350px;
+		min-height:900px;
+		height:auto;
+		float:left;
+	}
+	p{
+		text-align: center;
+		color: #808080;
+		margin: 30px;
+	}
+</style>
+
+<div class="side-menu">
+	<%= link_to root_path %>
+	<img src="/assets/logo.jpg" alt="非表示" style="margin: 50px 50px 0 50px;" width="250" height="250">
+	<% end %>
+	<% if user_signed_in? %>
+		<%#= link_to user_path(current_user.id) do %>
+			<p>User</p>
+		<%# end %>
+		<%= link_to about_path do %>
+			<p>About</p>
+		<% end %>
+		<%= link_to cart_items_path do %>
+			<p>Shooping</p>
+		<% end %>
+		<%= link_to destroy_user_session_path method: :delete do %>
+			<p>Logout</p>
+		<% end %>
+	<% else %>
+		<%= link_to home_about_path do %>
+			<p>About</p>
+		<% end %>
+		<%= link_to new_user_registration_path do %>
+			<p>Sign up</p>
+		<% end %>
+		<%= link_to new_user_session_path do %>
+			<p>Login</p>
+		<% end %>
+	<% end %>
+</div>
