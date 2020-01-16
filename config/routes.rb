@@ -17,8 +17,8 @@ devise_for :users, controllers: {
 namespace :admins do
 	resources :genres, only:[:index, :create, :update] do
 		member do
-			post :enable
-			post :disable
+			patch :enable
+			patch :disable
 		end
 	end
 	resources :users, only: [:index, :show, :edit, :update]
@@ -35,6 +35,6 @@ resources :ship_to_addresses, only: [:index, :create, :destroy, :edit, :update]
 root to: 'products#index'
 get 'orders/finish' => 'orders#finish'
 get 'home/about' => 'home#about'
-get 'admins' => 'admins#order#index'
+get 'admins' => 'admins/orders#index'
 
 end
