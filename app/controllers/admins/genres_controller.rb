@@ -21,14 +21,14 @@ class Admins::GenresController < ApplicationController
 
   def enable
   	@genre = Genre.find(params[:id])
-  	@genre.is_disable == false
+  	@genre.is_disable = false
   	@genre.save
   	redirect_to admins_genres_path
   end
 
   def disable
   	@genre = Genre.find(params[:id])
-  	@genre.is_disable == true
+  	@genre.is_disable = true
   	@genre.save
   	redirect_to admins_genres_path
   end
