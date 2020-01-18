@@ -1,2 +1,7 @@
-<h1>Admins::Genres#edit</h1>
-<p>Find me in app/views/admins/genres/edit.html.erb</p>
+<div>
+	<%= form_for(@genre, url: admins_genre_path, method: :patch) do |f| %>
+	<%= f.label :genre %>
+	<%= f.text_field :name %>
+	<%= f. submit "登録する" %>
+	<% end %>
+</div>

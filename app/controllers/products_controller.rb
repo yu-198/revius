@@ -7,8 +7,9 @@ class ProductsController < ApplicationController
     end
       @genres = Genre.active
   end
+
   def show
   	@product = Product.find(params[:id])
-	  @cart_item = CartItem.new(product_id: @product.id)
+	  @order = Order.new(product_id: @product.id)
   end
 end

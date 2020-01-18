@@ -1,2 +1,44 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div>
+	<%= render "layouts/header" %>
+	<h1>ユーザ編集画面</h1>
+	<%= form_for(@user, url:user_path(@user), method: :patch) do |f| %>
+	<%= link_to stop_user_path(@user), method: :patch do %>
+    <span>退会する</span>
+    <% end %>
+	<table>
+			<tr>
+				<th><%= f.label :first_name %></th>
+				<td><%= f.text_field :first_name %></td>
+			</tr>
+			<tr>
+				<th><%= f.label :last_name %></th>
+				<td><%= f.text_field :last_name %></td>
+			</tr>
+			<tr>
+				<th><%= f.label :first_name_kana %></th>
+				<td><%= f.text_field :first_name_kana %></td>
+			</tr>
+			<tr>
+				<th><%= f.label :last_name_kana %></th>
+				<td><%= f.text_field :last_name_kana %></td>
+			</tr>
+			<tr>
+				<th><%= f.label :postal_code %></th>
+				<td><%= f.text_field :postal_code %></td>
+			</tr>
+			<tr>
+				<th><%= f.label :address %></th>
+				<td><%= f.text_field :address %></td>
+			</tr>
+			<tr>
+				<th><%= f.label :phone %></th>
+				<td><%= f.text_field :phone %></td>
+			</tr>
+			<tr>
+				<th><%= f.label :email %></th>
+				<td><%= f.text_field :email %></td>
+			</tr>
+	</table>
+			<%= f.submit "更新する" %>
+	<% end %>
+</div>

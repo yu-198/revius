@@ -1,2 +1,48 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div>
+	<%= render "layouts/header" %>
+	<h1>マイページ</h1>
+	<table>
+			<tr>
+				<th>名前</th>
+				<td><%= @user.first_name %></td>
+				<td><%= @user.last_name %></td>
+			</tr>
+			<tr>
+				<th>フリガナ</th>
+				<td><%= @user.first_name_kana %></td>
+				<td><%= @user.last_name_kana %></td>
+			</tr>
+			<tr>
+				<th>郵便番号</th>
+				<td><%= @user.postal_code %></td>
+			</tr>
+			<tr>
+				<th>電話番号</th>
+				<td><%= @user.phone%></td>
+			</tr>
+			<tr>
+				<th>住所</th>
+				<td><%= @user.address %></td>
+			</tr>
+			<tr>
+				<th>メールアドレス</th>
+				<td><%= @user.email %></td>
+			</tr>
+	</table>
+
+	<%= link_to edit_user_registration_path do %>
+	<span>パスワードを編集する</span>
+	<% end %>
+
+	<%= link_to edit_user_path(@user) do %>
+	<span>登録情報の登録</span>
+	<% end %>
+
+	<%= link_to ship_to_addresses_path do %>
+	<h4>配送先一覧</h4>
+	<% end %>
+
+	<%= link_to orders_path do %>
+	<h4>注文履歴</h4>
+	<% end %>
+</div>

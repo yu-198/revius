@@ -40,27 +40,14 @@ ActiveRecord::Schema.define(version: 2020_01_15_071454) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "ordered_items", force: :cascade do |t|
-    t.integer "order_id", null: false
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id", null: false
     t.integer "product_id", null: false
     t.integer "quantity", null: false
     t.integer "price", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.string "first_name_kana", null: false
-    t.string "last_name_kana", null: false
-    t.integer "postal_code", null: false
-    t.string "address", null: false
-    t.integer "phone", null: false
     t.integer "postage", default: 500, null: false
     t.integer "delivery_status", default: 1, null: false
-    t.integer "payment", null: false
+    t.integer "payment", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -72,20 +59,6 @@ ActiveRecord::Schema.define(version: 2020_01_15_071454) do
     t.integer "price", null: false
     t.text "introduction", null: false
     t.boolean "is_stopped", default: false, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "ship_to_addresses", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.string "first_name_kana", null: false
-    t.string "last_name_kana", null: false
-    t.integer "postal_code", null: false
-    t.string "address", null: false
-    t.integer "phone", null: false
-    t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

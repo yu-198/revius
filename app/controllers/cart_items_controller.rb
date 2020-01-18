@@ -27,6 +27,7 @@ class CartItemsController < ApplicationController
   def update_all
   	@items = current_user.cart_items
   	@items.each do |item|
+      item.quantity = item_params[:quantity][item.id.to_s]
   		item.price = item.quantity * item.product.price
   		item.save
   	end
@@ -35,6 +36,6 @@ class CartItemsController < ApplicationController
 
   private
   	def item_params
-  		params.require(:cart_item).permit(:user_id, :product_id, :quantity, :price)
+  		params.permit(:user_id, :product_id, quantity: {}, price: {})
   	end
 end

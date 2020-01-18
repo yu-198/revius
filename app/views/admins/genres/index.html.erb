@@ -13,5 +13,6 @@
 		<% elsif genre.is_disable == true %>
 			<%= link_to "有効にする", enable_admins_genre_path(genre), method: :patch %>
 		<% end %>
+		<%= link_to " 編集する", edit_admins_genre_path(genre.id) %>
 	<% end %>
 </div>
