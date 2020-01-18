@@ -1,2 +1,18 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<div>
+	<%= render "layouts/header" %>
+	<div>
+		<%= attachment_image_tag @product, :image,style: "width:100%; "%>
+	</div>
+	<div>
+		<h4><%= @product.name %></h4>
+		<p><%= @product.introduction%></p>
+		<h4><%= addTax(@product.price)%>
+			<span>円(税込価格)</span>
+		</h4>
+		<%= form_for(@cart_item) do |f| %>
+		<%= f.hidden_field :product_id %>
+		<%= f.submit "カートに入れる"%>
+		<%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
+		<% end %>
+	</div>
+</div>

@@ -103,7 +103,6 @@ ActiveRecord::Schema.define(version: 2020_01_15_071454) do
     t.integer "postal_code", null: false
     t.string "address", null: false
     t.integer "phone", null: false
-    t.integer "password", null: false
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

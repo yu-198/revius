@@ -36,5 +36,7 @@ root to: 'products#index'
 get 'orders/finish' => 'orders#finish'
 get 'home/about' => 'home#about'
 get 'admins' => 'admins/orders#index'
+patch :cart_items, to: 'cart_items#update_all'
+delete :cart_items, to: 'cart_items#destroy_all'
 
 end
