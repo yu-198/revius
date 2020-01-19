@@ -8,7 +8,9 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(current_user.id)
   	if@user.update(user_params)
+      byebug
   	  redirect_to user_path(current_user.id)
   	else
   	  render :new

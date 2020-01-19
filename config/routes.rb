@@ -26,7 +26,11 @@ namespace :admins do
 	resources :orders, only: [:index, :show, :update]
 end
 
-resources :users, only: [:show, :edit, :update]
+resources :users, only: [:show, :edit, :update] do
+	member do
+		 patch :stop
+	end
+end
 resources :orders, only: [:show, :new, :index, :create] do
 	  collection {get "finish"}
     end
