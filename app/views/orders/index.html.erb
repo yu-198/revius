@@ -1,2 +1,42 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
+<div>
+	<h1>注文履歴一覧</h1>
+	<% @order.each do |order| %>
+	<table>
+			<tr>
+				<th><%= attachment_image_tag serch_product(order), :image, :fill, 100, 100 %></th>
+			</tr>
+			<tr>
+				<th>注文日</th>
+				<td><%= order.created_at.strftime('%Y/%m/%d')%></td>
+			</tr>
+			<tr>
+				<th>注文者</th>
+				<td><%= @user.first_name %></td>
+			</tr>
+			<tr>
+				<th>注文商品</th>
+				<td><%= @product.name %></td>
+			</tr>
+			<tr>
+				<th>注文個数</th>
+				<td><%= order.quantity %></td>
+			</tr>
+			<tr>
+				<th>支払い金額</th>
+				<td><%= total_price(order) %></td>
+			</tr>
+			<tr>
+				<th>支払い方法</th>
+				<td><%= order.payment %></td>
+			</tr>
+			<tr>
+				<th>配送状況</th>
+				<td><%= order.delivery_status %></td>
+			</tr>
+			<tr>
+				<th>配送先</th>
+				<td><%= @user.address %></td>
+			</tr>
+	</table>
+	<% end %>
+</div>
