@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
 	belongs_to :genre
-	belongs_to :order, optional: true
+	# belongs_to :order, optional: true
+	has_many :orders
 	attachment :image
 	scope :active, -> {where(is_stopped: false)}
 

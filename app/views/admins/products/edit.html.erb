@@ -15,6 +15,8 @@
 	<%= f.text_field :price %>
 	<%= f.label :is_stopped %>
 	<%= f.select :is_stopped, {Sale:false,Suspended_sales:true} %>
+	<%= f.label :stock %>
+	<%= f.text_field :stock, [min:1,max:100] %>
 	<%= f.submit "Register" %>
 	<% end %>
 </div>

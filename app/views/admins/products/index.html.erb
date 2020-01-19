@@ -13,6 +13,7 @@
 				<th>Price</th>
 				<th>Genre</th>
 				<th>Status</th>
+				<th>Stock</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -33,6 +34,9 @@
 					<% else %>
 						<span>Sale</span>
 					<% end %>
+				</td>
+				<td>
+					<%= product.stock %>
 				</td>
 			</tr>
 			<% end %>
