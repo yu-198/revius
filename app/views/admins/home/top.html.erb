@@ -1,0 +1,33 @@
+<div>
+	<h1>本日購入された商品</h1>
+	<% @order.each do |order| %>
+	<%# byebug %>
+	<%= attachment_image_tag order.product, :image, :fill, 150,150 %>
+	<table>
+		<tr>
+			<th>購入日</th>
+			<td><%=  order.created_at.strftime('%Y/%m/%d') %></td>
+		</tr>
+		<tr>
+			<th>商品名</th>
+			<td><%= order.product.name %></td>
+		</tr>
+		<tr>
+			<th>支払い金額</th>
+			<td><%= total_price(order) %>円(税込み + 送料 )</td>
+		</tr>
+		<tr>
+			<th>購入個数</th>
+			<td><%= order.quantity%>個</td>
+		</tr>
+		<tr>
+			<th>支払い方法</th>
+			<td><%= order.payment %></td>
+		</tr>
+		<tr>
+			<th>配送状況</th>
+			<td><%= order.delivery_status %></td>
+		</tr>
+	</table>
+	<% end %>
+</div>
