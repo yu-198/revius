@@ -10,8 +10,15 @@ class OrdersController < ApplicationController
   def create
       @order = Order.new(order_params)
       @order.user_id = current_user.id
-      @order.price = Product.find(params[:order][:product_id]).tax_include_price
-    if@order.save
+      product = Product.find(params[:order][:product_id])
+      if (product.stock - @order.quantity) < 0
+        render :show
+      end
+
+      @order.price = product.tax_include_price
+    if @order.save
+      product.stock  -= @order.quantity
+      product.save
       redirect_to finish_orders_path
     else
       render :edit

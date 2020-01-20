@@ -28,7 +28,7 @@ namespace :admins do
 		end
 	end
 	resources :products, except: [:destroy]
-	resources :orders, only: [:show, :update]
+	resources :orders, only: [:show, :update, :index]
 end
 
 resources :users, only: [:show, :edit, :update] do
@@ -45,7 +45,7 @@ resources :cart_items, only: [:index, :create, :destroy]
 root to: 'products#index'
 
 get 'home/about' => 'home#about'
-get 'admins' => 'admins/orders#index'
+get 'admins' => 'admins/home#top'
 patch :cart_items, to: 'cart_items#update_all'
 delete :cart_items, to: 'cart_items#destroy_all'
 
