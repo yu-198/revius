@@ -18,6 +18,7 @@
 					<span>退会済み</span>
 					<% end %>
 				</td>
+				<td><%= link_to "編集する", edit_admins_user_path(user.id) %></td>
 			</tr>
 		<% end %>
 	</table>

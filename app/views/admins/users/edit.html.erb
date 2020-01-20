@@ -1,2 +1,27 @@
-<h1>Admins::Users#edit</h1>
-<p>Find me in app/views/admins/users/edit.html.erb</p>
+ <div>
+ 	<h1>顧客編集画面</h1>
+ 	<%= form_for(@user, url:admins_user_path, method: :patch) do |f| %>
+ 	<label>会員ID</label>
+ 	<%= @user.id %>
+ 	<label>氏名</label>
+ 	<%= f.text_field :first_name %>
+ 	<%= f.text_field :last_name %>
+ 	<label>フリガナ</label>
+ 	<%= f.text_field :first_name_kana %>
+ 	<%= f.text_field :last_name_kana %>
+ 	<label>郵便番号(ハイフン無し)</label>
+ 	<%= f.text_field :postal_code %>
+ 	<label>住所</label>
+ 	<%= f.text_field :address %>
+ 	<label>電話番号</label>
+ 	<%= f.text_field :phone %>
+ 	<label>メールアドレス</label>
+ 	<%= f.text_field :email %>
+ 	<% if @user.is_deleted == false %>
+ 	<%= link_to "会員にする",unavailable_admins_user_path(@user.id), method: :patch %>
+ 	<% else %>
+ 	<%= link_to "退会させる",available_admins_user_path(@user.id), method: :patch %>
+ 	<% end %>
+ 	<%= f.submit "変更を保存する" %>
+ 	<% end %>
+ </div>
