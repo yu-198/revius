@@ -1,11 +1,13 @@
 class Admins::OrdersController < ApplicationController
-  def index
-  	@order = Order.created_today
-  end
+	before_action :authenticate_admin!
 
-  def update
-  end
+	def index
+		@order = Order.created_today
+	end
 
-  def show
-  end
+	def update
+	end
+
+	def show
+	end
 end

@@ -1,4 +1,6 @@
 class CartItemsController < ApplicationController
+	# before_action :authenticate_user!
+	# before_action :user_is_deleted
 #   def index
 #   	@cart_items = current_user.cart_items
 #   	@total_price = @cart_items.sum(:price)
@@ -38,4 +40,9 @@ class CartItemsController < ApplicationController
 #   	def item_params
 #   		params.permit(:user_id, :product_id, quantity: {}, price: {})
 #   	end
+	# def user_is_deleted
+ #      if user_signed_in? && current_user.is_deleted?
+ #         redirect_to root_path
+ #      end
+ #    end
 # end

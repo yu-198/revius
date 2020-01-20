@@ -1,4 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :user_is_deleted
+
   def index
       @user = User.find(current_user.id)
       @order = Order.where(user_id: @user.id)
@@ -28,4 +31,9 @@ class OrdersController < ApplicationController
   	def order_params
   		params.require(:order).permit(:quantity, :product_id)
   	end
+    def user_is_deleted
+      if user_signed_in? && current_user.is_deleted?
+         redirect_to root_path
+      end
+    end
 end
