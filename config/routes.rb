@@ -21,7 +21,12 @@ namespace :admins do
 			patch :disable
 		end
 	end
-	resources :users, only: [:index, :show, :edit, :update]
+	resources :users, only: [:index, :show, :edit, :update] do
+		member do
+			patch :available
+			patch :unavailable
+		end
+	end
 	resources :products, except: [:destroy]
 	resources :orders, only: [:show, :update]
 end
