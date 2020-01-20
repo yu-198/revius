@@ -23,15 +23,15 @@ namespace :admins do
 	end
 	resources :users, only: [:index, :show, :edit, :update]
 	resources :products, except: [:destroy]
-	resources :orders, only: [:index, :show, :update]
+	resources :orders, only: [:show, :update]
 end
 
 resources :users, only: [:show, :edit, :update] do
 	member do
-		 patch :stop
+		 patch :leave
 	end
 end
-resources :orders, only: [:show, :new, :create] do
+resources :orders, only: [:show, :new, :create, :index] do
 	  collection {get "finish"}
     end
 resources :products, only: [:show]
