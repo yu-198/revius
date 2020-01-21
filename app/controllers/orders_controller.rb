@@ -11,13 +11,17 @@ class OrdersController < ApplicationController
       @order = Order.new(order_params)
       @order.user_id = current_user.id
       product = Product.find(params[:order][:product_id])
+
       if (product.stock - @order.quantity) < 0
+        product.is_stopped = true
+        product.save
         render :show
       end
 
       @order.price = product.tax_include_price
     if @order.save
       product.stock  -= @order.quantity
+      product.is_stopped = true
       product.save
       redirect_to finish_orders_path
     else
