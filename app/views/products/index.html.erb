@@ -1,10 +1,54 @@
-<div>
-	<%= render "layouts/header" %>
-	<% @products.each do |product|%>
-	<%= attachment_image_tag product, :image, :fill, 50 ,50 %>
-	<%= link_to product_path(product.id) do %>
-	<%= product.name %>
-	<% end %>
-	<%= product.price %>
-	<% end %>
-</div>
+<style>
+	.genre{
+		background-color: red;
+	}
+	.photo{
+		height: 500px;
+		background-color: blue;
+	}
+	.item{
+		display: inline-block;
+	}
+
+</style>
+	<div class="row">
+		<div class="col-lg-3 header", style ="margin: 0; padding: 0;">
+			<%= render "layouts/header" %>
+		</div>
+
+		<div class="col-lg-6 photo">
+		</div>
+
+		<div class="col-lg-3 genre", style ="height: 500px; margin: 0; padding: 0;">
+			<p style = "font-size: 20px; text-align: center;">ジャンルで検索する</p>
+			<div class="col-lg-11">
+			<% @genres.each do |genre|%>
+				<%= link_to root_path(genre: genre.id) do %>
+					<span style="font-size: 15px; padding: 8px;"><%= genre.name %></span>
+				<% end %>
+			<% end %>
+			</div>
+		</div>
+
+		<div class="col-lg-9 each-item", style ="height: 500px; padding: 0; margin-top: 10px;">
+			<% @products.each do |product|%>
+			<div class="item" style="height: 280px; padding: 10px;">
+				<%= link_to product_path(product.id) do %>
+					<%= attachment_image_tag product, :image, :fill, 180 ,180 %><br>
+				<% end %>
+				<span>商品名:</span>
+					<span><%= product.name %></span><br>
+				<span>価格:</span>
+					<span><%= product.price %>円(税抜価格)</span><br>
+				<span>ジャンル名:</span>
+					<span><%= product.genre.name %></span><br>
+				<span>現在:</span>
+				<% if product.is_stopped == false %>
+					<span>販売中</span>
+				<% elsif product.is_stopped == true %>
+					<span>販売停止</span>
+				<% end %>
+			</div>
+			<% end %>
+		</div>
+	</div>

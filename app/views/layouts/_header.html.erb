@@ -1,54 +1,55 @@
 <style>
-	ul{
-		list-style: none;
+	.logo{
+		display: block;
+ 		margin: 0 90px 50px 90px;
 	}
-
-	#side-menu{
-		width:350px;
-		min-height:900px;
-		height:auto;
-		float:left;
-	}
-	p{
+	.account{
 		text-align: center;
-		color: #808080;
-		margin: 30px;
+		padding-top: 80px;
+		font-size: 20px;
+	}
+	li{
+		list-style: none;
+		text-align: center;
+		margin: 150px 0 100px 0;
+		size: 50px;
+	}
+	.list{
+		margin: 0;
+		padding: 0;
+		font-size: 25px;
+	}
+	.link{
+		color: #555555;
+		text-decoration: none;
 	}
 </style>
 
 <div class="side-menu">
-
 	<% if user_signed_in? && current_user.is_deleted? %>
-		<p>あなたは退会済みです</p>
+		<p class="account">あなたは退会済みです</p>
 	<% elsif user_signed_in? && !current_user.is_deleted %>
-		<p>こんにちは、<%= current_user.first_name %>さん</p>
+		<p class="account">こんにちは、<%= current_user.first_name %>さん</p>
 	<% end %>
-
-	<%= link_to root_path do %>
-	<img src="/assets/logo.jpg" alt="非表示" style="margin: 50px 50px 0 50px;" width="250" height="250">
-	<% end %>
-	<% if user_signed_in? && !current_user.is_deleted? %>
-		<%= link_to user_path(current_user.id) do %>
-			<p>User</p>
-		<% end %>
-		<%= link_to home_about_path do %>
-			<p>About</p>
-		<% end %>
+	<div>
 		<%= link_to root_path do %>
-			<p>Shooping</p>
+			<img src="/assets/logo.jpg" alt="非表示" , class="logo">
 		<% end %>
-		<%= link_to destroy_user_session_path, method: :delete do %>
-			<p>Logout</p>
+	</div>
+	<div>
+		<% if user_signed_in? && !current_user.is_deleted? %>
+			<ul class="list">
+				<li><%= link_to "User", user_path(current_user.id),class: "link"%></li>
+				<li><%= link_to "About", home_about_path,class: "link" %></li>
+				<li><%= link_to "Shooping", root_path,class: "link" %></li>
+				<li><%= link_to "Logout", destroy_user_session_path, method: :delete,class: "link" %></li>
+			</ul>
+		<% else %>
+			<ul>
+				<li><%= link_to "About", home_about_path,class: "link" %></li>
+				<li><%= link_to "Sign up", new_user_registration_path,class: "link" %></li>
+				<li><%= link_to "Login", new_user_session_path,class: "link" %></li>
+			</ul>
 		<% end %>
-	<% else %>
-		<%= link_to home_about_path do %>
-			<p>About</p>
-		<% end %>
-		<%= link_to new_user_registration_path do %>
-			<p>Sign up</p>
-		<% end %>
-		<%= link_to new_user_session_path do %>
-			<p>Login</p>
-		<% end %>
-	<% end %>
+	</div>
 </div>
