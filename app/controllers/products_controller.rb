@@ -5,9 +5,9 @@ class ProductsController < ApplicationController
 
   def index
     if params["genre"]
-      @products = Product.active.where(genre_id: params["genre"])
+      @products = Product.where(genre_id: params["genre"])
     else
-			@products = Product.active
+      @products = Product.all
     end
       @genres = Genre.active
   end

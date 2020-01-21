@@ -9,11 +9,15 @@
 		<h4><%= addTax(@product.price)%>
 			<span>円(税込価格)</span>
 		</h4>
+		<% if @product.stock  >  0 %>
 		<%= form_for(@order,url:orders_path) do |f| %>
 		<%= f.hidden_field :product_id %>
 		<%= f.submit "購入する" %>
 		<%= f.select :quantity, [*1..@product.stock.to_i] %>
 		<% end %>
+		<% end %>
+		<% if @product.is_stopped == true %>
+		<span>販売停止</span>
 		<% end %>
 	</div>
 </div>

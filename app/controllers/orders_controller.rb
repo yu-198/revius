@@ -21,8 +21,10 @@ class OrdersController < ApplicationController
       @order.price = product.tax_include_price
     if @order.save
       product.stock  -= @order.quantity
-      product.is_stopped = true
-      product.save
+      if  product.stock == 0
+        product.is_stopped = true
+        product.save
+      end
       redirect_to finish_orders_path
     else
       render :edit

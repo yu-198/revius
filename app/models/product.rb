@@ -3,7 +3,6 @@ class Product < ApplicationRecord
 	# belongs_to :order, optional: true
 	has_many :orders
 	attachment :image
-	scope :active, -> {where(is_stopped: false)}
 
 
 	# 擬似的にorderに擬似的にカラムを作っている(product_priceの値を税有りの金額で入れるため)
