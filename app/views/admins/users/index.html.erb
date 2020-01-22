@@ -1,26 +1,32 @@
-<div>
-	<h1>会員一覧画面</h1>
-	<table>
+<div class="row">
+	<div class="col-lg-3", style="margin: 0; padding: 0;">
+		<%= render "layouts/adminheader"%>
+ 	</div>
+ 	<div class="col-lg-9 user", style="margin-top:60px; padding: 0;">
+		<h1>会員一覧画面</h1>
+		<table class="table">
 			<tr>
 				<th>会員ID</th>
 				<th>名前</th>
 				<th>メールアドレス</th>
 				<th>ステータス</th>
+				<th>詳細へ</th>
 			</tr>
 			<% @user.each do |user| %>
 			<tr>
 				<td><%= user.id %></td>
 				<td><%= user.first_name %> <%= user.last_name %></td>
 				<td><%= user.email %></td>
-				<td><% if user.is_deleted == false %>
-					<span>有効会員</span>
+				<td>
+					<% if user.is_deleted == false %>
+						<span>有効会員</span>
 					<% else %>
-					<span>退会済み</span>
+						<span>退会済み</span>
 					<% end %>
 				</td>
 				<td><%= link_to "編集する", edit_admins_user_path(user.id) %></td>
 			</tr>
-		<% end %>
-	</table>
-
+			<% end %>
+		</table>
+	</div>
 </div>

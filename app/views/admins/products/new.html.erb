@@ -1,20 +1,39 @@
 <div>
-	<%= render "layouts/adminheader" %>
-	<h1>New product registration screen</h1>
-	<%= form_for(@product, url:admins_products_path) do |f| %>
-	<%= f.label :image %>
-	<%= f.attachment_field :image %>
-	<%= f.label :name %>
-	<%= f.text_field :name %>
-	<%= f.label :introduction %>
-	<%= f.text_area :introduction %>
-	<%= f.label :genre %>
-	<%= f.collection_select :genre_id, Genre.where(is_disable: false), :id, :name %>
-	<%= f.label :price %>
-	<%= f.text_field :price %>
-	<%= f.select :is_stopped, {Sale: false, Suspended_sales: true} %>
-	<%= f.label :stock %>
-	<%= f.number_field :stock, min:1, max:100 %>
-	<%= f.submit "Register" %>
-	<% end %>
+	<div class="col-lg-3", style = "margin:0; padding: 0;">
+		<%= render "layouts/adminheader" %>
+	</div>
+	<div class="col-lg-9", style = "margin-top: 70px; padding-left: 30px;">
+		<h1>新規登録画面</h1>
+		<%= form_for(@product, url:admins_products_path) do |f| %>
+			<div class="form-group">
+				<label>画像</label>
+				<%= f.attachment_field :image %>
+			</div>
+			<div class="form-group">
+				<label>商品名</label>
+				<%= f.text_field :name %>
+			</div>
+			<div class="form-group">
+				<label>商品説明</label>
+				<%= f.text_area :introduction %>
+			</div>
+			<div class="form-group">
+				<label>ジャンル</label>
+				<%= f.collection_select :genre_id, Genre.where(is_disable: false), :id, :name %>
+			</div>
+			<div class="form-group">
+				<label>価格(税抜価格)</label>
+				<%= f.text_field :price %>
+			</div>
+			<div class="form-group">
+				<label>販売ステータス</label>
+				<%= f.select :is_stopped, {販売中: false, 販売停止: true} %>
+			</div>
+			<div class="form-group">
+				<label>在庫数</label>
+				<%= f.number_field :stock, min:1, max:100 %>
+			</div>
+			<%= f.submit "登録する" %>
+		<% end %>
+	</div>
 </div>

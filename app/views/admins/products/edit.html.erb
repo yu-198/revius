@@ -1,22 +1,40 @@
-<div>
-	<%= render "layouts/adminheader"%>
-	<h1>Product edit screen</h1>
-	<%= form_for @product, url: admins_product_path, method: :patch do |f| %>
-	<%= attachment_image_tag @product, :image, :fill, 50, 50 %>
-	<%= f.label :image %>
-	<%= f.attachment_field :image %>
-	<%= f.label :name %>
-	<%= f.text_field :name %>
-	<%= f.label :introduction %>
-	<%= f.text_field :introduction %>
-	<%= f.label :genre %>
-	<%= f.collection_select :genre_id, Genre.where(is_disable: false), :id, :name %>
-	<%= f.label :price %>
-	<%= f.text_field :price %>
-	<%= f.label :is_stopped %>
-	<%= f.select :is_stopped, {Sale:false,Suspended_sales:true} %>
-	<%= f.label :stock %>
-	<%= f.select :stock, [*1..100] %>
-	<%= f.submit "Register" %>
-	<% end %>
+<div class="row">
+	<div class="col-lg-3", style = "margin: 0; padding: 0;">
+		<%= render "layouts/adminheader"%>
+	</div>
+	<div class="col-lg-9", style = "margin-top: 60px; padding-left: 30px;">
+		<h1>商品編集画面</h1>
+		<%= form_for(@product, url: admins_product_path, method: :patch) do |f| %>
+		<%= attachment_image_tag @product, :image, :fill, 150, 150 %>
+		<div class="form-group">
+			<label>商品画像</label>
+			<%= f.attachment_field :image %>
+		</div>
+		<div class="form-group">
+			<label>商品名</label>
+			<%= f.text_field :name %>
+		</div>
+		<div class="form-group">
+			<label>商品説明</label>
+			<%= f.text_field :introduction %>
+		</div>
+		<div class="form-group">
+			<label>ジャンル</label>
+			<%= f.collection_select :genre_id, Genre.where(is_disable: false), :id, :name %>
+		</div>
+		<div class="form-group">
+			<label>価格(税抜価格)</label>
+			<%= f.text_field :price %>
+		</div>
+		<div class="form-group">
+			<label>販売ステータス</label>
+			<%= f.select :is_stopped, {Sale:false,Suspended_sales:true} %>
+		</div>
+		<div class="form-group">
+			<label>在庫数</label>
+			<%= f.select :stock, [*1..100] %>
+		</div>
+			<%= f.submit "登録する" %>
+		<% end %>
+	</div>
 </div>

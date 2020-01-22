@@ -1,43 +1,43 @@
-<div>
-	<%= render "layouts/adminheader"%>
-	<h1>Product index screen</h1>
-	<%= link_to new_admins_product_path do %>
-		<span>New registration screen</span>
-	<% end %>
-	<table>
-		<thead>
+<div class="row">
+	<div class="col-lg-3", style = "margin: 0; padding: 0;">
+		<%= render "layouts/adminheader"%>
+	</div>
+	<div class="col-lg-9">
+		<h1>商品一覧ページ</h1>
+		<%= link_to new_admins_product_path do %>
+			<span>新規登録画面へ</span>
+		<% end %>
+		<table class="table">
 			<tr>
 				<th>Id</th>
-				<th>Image</th>
-				<th>Name</th>
-				<th>Price</th>
-				<th>Genre</th>
-				<th>Status</th>
-				<th>Stock</th>
+				<th>画像</th>
+				<th>商品名</th>
+				<th>価格(税抜価格)</th>
+				<th>ジャンル</th>
+				<th>販売ステータス</th>
+				<th>在庫数</th>
 			</tr>
-		</thead>
-		<tbody>
 			<% @products.each do |product| %>
-			<tr>
-				<td><%= product.id %></td>
-				<td><%= attachment_image_tag product, :image, :fill, 50, 50 %></td>
-				<td>
-					<%= link_to admins_product_path(product.id) do %>
-					<%= product.name %>
-					<% end %>
-				</td>
-				<td><%= product.price %></td>
-				<td><%= product.genre.name %></td>
-				<td>
-					<% if product.is_stopped? %>
-						<span>Suspended_sales</span>
-					<% else %>
-						<span>Sale</span>
-					<% end %>
-				</td>
-				<td><%= product.stock %>個</td>
-			</tr>
+				<tr>
+					<td><%= product.id %></td>
+					<td><%= attachment_image_tag product, :image, :fill, 50, 50 %></td>
+					<td>
+						<%= link_to admins_product_path(product.id) do %>
+							<%= product.name %>
+						<% end %>
+					</td>
+					<td><%= product.price %></td>
+					<td><%= product.genre.name %></td>
+					<td>
+						<% if product.is_stopped? %>
+							<span>Suspended_sales</span>
+						<% else %>
+							<span>Sale</span>
+						<% end %>
+					</td>
+					<td><%= product.stock %>個</td>
+				</tr>
 			<% end %>
-		</tbody>
-	</table>
+		</table>
+	</div>
 </div>
