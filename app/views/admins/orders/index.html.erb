@@ -11,14 +11,14 @@
 						<th>注文者名</th>
 						<th>注文商品</th>
 						<th>注文個数</th>
-						<th>ステータス</th>
+						<th>支払いステータス</th>
 					</tr>
 					<% @order.each do |order| %>
 					<tr>
 						<td><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
 						<td><%= order.user.first_name %><%= order.user.last_name %></td>
 						<td><%= order.product.name %></td>
-						<td><%= order.quantity %></td>
+						<td><%= order.quantity %>個</td>
 						<td><%= order.delivery_status %></td>
 					</tr>
 					<% end %>
