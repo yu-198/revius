@@ -1,42 +1,35 @@
-<div>
-	<h1>注文履歴一覧</h1>
-	<% @order.each do |order| %>
-	<table>
-			<tr>
-				<th><%= attachment_image_tag serch_product(order), :image, :fill, 100, 100 %></th>
-			</tr>
-			<tr>
-				<th>注文日</th>
-				<td><%= order.created_at.strftime('%Y/%m/%d')%></td>
-			</tr>
-			<tr>
-				<th>注文者</th>
-				<td><%= @user.first_name %></td>
-			</tr>
-			<tr>
-				<th>注文商品</th>
-				<td><%= @product.name %></td>
-			</tr>
-			<tr>
-				<th>注文個数</th>
-				<td><%= order.quantity %></td>
-			</tr>
-			<tr>
-				<th>支払い金額</th>
-				<td><%= total_price(order) %></td>
-			</tr>
-			<tr>
-				<th>支払い方法</th>
-				<td><%= order.payment %></td>
-			</tr>
-			<tr>
-				<th>配送状況</th>
-				<td><%= order.delivery_status %></td>
-			</tr>
-			<tr>
-				<th>配送先</th>
-				<td><%= @user.address %></td>
-			</tr>
-	</table>
-	<% end %>
+<style>
+	.item{
+		display: inline-block;
+	}
+</style>
+
+<div class="row">
+	<div class="col-lg-3", style ="margin: 0; padding: 0;">
+		<%= render "layouts/header" %>
+	</div>
+	<div class="col-lg-9", style ="margin: 0; padding: 0; height: 500px; width: 1000px;">
+		<h1>注文履歴一覧</h1>
+		<% @order.each do |order| %>
+		<div class="item", style = "height: 280px; padding: 10px; margin-top: 10px;">
+			<%= attachment_image_tag serch_product(order), :image, :fill, 180, 180 %><br>
+				<span>注文日</span>
+					<span><%= order.created_at.strftime('%Y/%m/%d')%></span><br>
+				<span>注文者</span>
+					<span><%= @user.first_name %></span><br>
+				<span>注文商品</span>
+					<span><%= @product.name %></span><br>
+				<span>注文個数</span>
+					<span><%= order.quantity %></span><br>
+				<span>支払い金額</span>
+					<span><%= total_price(order) %></span><br>
+				<span>支払い方法</span>
+					<span><%= order.payment %></span><br>
+				<span>配送状況</span>
+					<span><%= order.delivery_status %></span><br>
+				<span>配送先</span>
+					<span><%= @user.address %></span><br>
+			<% end %>
+		</div>
+	</div>
 </div>

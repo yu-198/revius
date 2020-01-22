@@ -1,23 +1,29 @@
-<div>
-	<%= render "layouts/header" %>
-	<div>
-		<%= attachment_image_tag @product, :image,style: "width:100%; "%>
+<style>
+	.introduction{
+		overflow-y: scroll;
+	}
+</style>
+
+<div class="row">
+	<div class="col-lg-3 ", style ="margin: 0; padding: 0;">
+		<%= render "layouts/header" %>
 	</div>
-	<div>
-		<h4><%= @product.name %></h4>
-		<p><%= @product.introduction%></p>
-		<h4><%= addTax(@product.price)%>
-			<span>円(税込価格)</span>
-		</h4>
-		<% if @product.stock  >  0 %>
-		<%= form_for(@order,url:orders_path) do |f| %>
-		<%= f.hidden_field :product_id %>
-		<%= f.submit "購入する" %>
-		<%= f.select :quantity, [*1..@product.stock.to_i] %>
-		<% end %>
-		<% end %>
-		<% if @product.is_stopped == true %>
-		<span>販売停止</span>
-		<% end %>
+	<div class="col-lg-5 ",style=" margin: 0; padding: 0;">
+		<div style ="margin: 300px 0 0 100px;">
+			<%= attachment_image_tag @product, :image, :fill, 500,500 %>
+			<h3><%= @product.name %></h3>
+			<p class="introduction"><%= @product.introduction%></p>
+			<h4><%= addTax(@product.price)%>円(税込価格)</h4>
+			<% if @product.stock  >  0 %>
+				<%= form_for(@order,url:orders_path) do |f| %>
+					<%= f.hidden_field :product_id %>
+					<%= f.submit "購入する" %>
+					<%= f.select :quantity, [*1..@product.stock.to_i] %>
+				<% end %>
+			<% end %>
+			<% if @product.is_stopped == true %>
+				<h4>現在販売停止</h4>
+			<% end %>
+		</div>
 	</div>
 </div>

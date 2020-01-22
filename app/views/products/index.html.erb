@@ -9,30 +9,38 @@
 	.item{
 		display: inline-block;
 	}
-
+	.article{
+		background-color: black;
+	}
 </style>
+
 	<div class="row">
-		<div class="col-lg-3 header", style ="margin: 0; padding: 0;">
+		<div class="col-lg-3", style ="margin: 0; padding: 0;">
 			<%= render "layouts/header" %>
 		</div>
 
 		<div class="col-lg-6 photo">
 		</div>
 
-		<div class="col-lg-3 genre", style ="height: 500px; margin: 0; padding: 0;">
-			<p style = "font-size: 20px; text-align: center;">ジャンルで検索する</p>
-			<div class="col-lg-11">
-			<% @genres.each do |genre|%>
-				<%= link_to root_path(genre: genre.id) do %>
-					<span style="font-size: 15px; padding: 8px;"><%= genre.name %></span>
-				<% end %>
-			<% end %>
+		<div class="col-lg-3", style ="margin: 0; padding: 0;">
+			<div class="col-lg-3 genre", style ="height: 250px;  width: 100%; margin: 0; padding: 0;">
+				<p style="font-size: 20px; text-align: center;">ジャンルで検索する</p>
+				<div class="col-lg-11">
+					<% @genres.each do |genre|%>
+						<%= link_to root_path(genre: genre.id) do %>
+							<span style="font-size: 15px; padding: 8px;"><%= genre.name %></span>
+						<% end %>
+					<% end %>
+				</div>
+			</div>
+			<div class="col-lg-3 article", style = "height: 250px; width: 100%; margin: 0; padding: 0;">
+				<p style="font-size: 20px; text-align: center;">記事</p>
 			</div>
 		</div>
 
 		<div class="col-lg-9 each-item", style ="height: 500px; padding: 0; margin-top: 10px;">
 			<% @products.each do |product|%>
-			<div class="item" style="height: 280px; padding: 10px;">
+			<div class="item", style="height: 280px; padding: 10px;">
 				<%= link_to product_path(product.id) do %>
 					<%= attachment_image_tag product, :image, :fill, 180 ,180 %><br>
 				<% end %>

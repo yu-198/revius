@@ -45,7 +45,7 @@
 				<li><%= link_to "Logout", destroy_user_session_path, method: :delete,class: "link" %></li>
 			</ul>
 		<% else %>
-			<ul>
+			<ul class="list">
 				<li><%= link_to "About", home_about_path,class: "link" %></li>
 				<li><%= link_to "Sign up", new_user_registration_path,class: "link" %></li>
 				<li><%= link_to "Login", new_user_session_path,class: "link" %></li>
