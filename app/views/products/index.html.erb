@@ -1,29 +1,27 @@
 <style>
-	.genre{
-		background-color: red;
-	}
-	.photo{
-		height: 500px;
-		background-color: blue;
-	}
 	.item{
 		display: inline-block;
 	}
-	.article{
-		background-color: black;
-	}
+
 </style>
 
 	<div class="row">
 		<div class="col-lg-3", style ="margin: 0; padding: 0;">
 			<%= render "layouts/header" %>
 		</div>
-
-		<div class="col-lg-6 photo">
+		<div class="col-lg-6 photo", style = "height: 500px; padding: 5px 5px 0 0;">
+        	<div class="theTarget">
+            	<div style="background-image: url(assets/aimer.jpg)"></div>
+           		<div style="background-image: url(assets/clear.jpg)"></div>
+            	<div style="background-image: url(assets/cocooil.jpg)"></div>
+            	<div style="background-image: url(assets/plqml.jpg)"></div>
+            	<div style="background-image: url(assets/ronn.jpg)"></div>
+        	</div>
+        	<script src="assets/jquery.min.js"></script>
+    		<script src="assets/skippr.min.js"></script>
 		</div>
-
 		<div class="col-lg-3", style ="margin: 0; padding: 0;">
-			<div class="col-lg-3 genre", style ="height: 250px;  width: 100%; margin: 0; padding: 0;">
+			<div class="col-lg-3 genre", style ="height: 250px;  width: 100%; margin: 0; padding: 40px 0 0 0;">
 				<p style="font-size: 20px; text-align: center;">ジャンルで検索する</p>
 				<div class="col-lg-11">
 					<% @genres.each do |genre|%>
@@ -37,7 +35,6 @@
 				<p style="font-size: 20px; text-align: center;">記事</p>
 			</div>
 		</div>
-
 		<div class="col-lg-9 each-item", style ="height: 500px; padding: 0; margin-top: 10px;">
 			<% @products.each do |product|%>
 			<div class="item", style="height: 280px; padding: 10px;">
