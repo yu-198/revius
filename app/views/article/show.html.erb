@@ -1,0 +1,15 @@
+<div class="row">
+	<div class="col-lg-3">
+		<%= render "layouts/header"%>
+	</div>
+	<div class="col-lg-9">
+		<%= @article.created_at.strftime("%Y-%m-%d %H:%M")%>
+		<%= @article.name %>
+		<%= @article.product.image %>
+		<%= @article.product.name %>
+		<%= @article.product.introduction %>
+		<%= link_to product_path(@article.product.id) do %>
+			<h3>商品の購入はこちら</h3>
+		<% end %>
+	</div>
+</div>

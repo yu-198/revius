@@ -29,6 +29,7 @@ namespace :admins do
 	end
 	resources :products, except: [:destroy]
 	resources :orders, only: [:show, :update, :index]
+	resources :article, only: [:index, :edit, :create, :update, :new]
 end
 
 resources :users, only: [:show, :edit, :update] do
@@ -41,6 +42,7 @@ resources :orders, only: [:show, :new, :create, :index] do
     end
 resources :products, only: [:show]
 resources :cart_items, only: [:index, :create, :destroy]
+resources :article, only:[:show, :index]
 
 root to: 'products#index'
 

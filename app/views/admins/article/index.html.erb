@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="col-lg-3">
+		<%= render "layouts/adminheader"%>
+	</div>
+	<div class="col-lg-9">
+		<h1>記事一覧画面</h1>
+		<table class="table">
+			<%= link_to new_admins_article_path do %>
+				<span>新規記事登録画面へ</span>
+			<% end %>
+			<% @article.each do |article| %>
+				<tr>
+					<td><%= article.image %></td>
+					<td><%= article.name %></td>
+					<td><%= link_to "編集する", admins_admins_article_index, method: :post %></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
