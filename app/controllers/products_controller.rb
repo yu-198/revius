@@ -3,11 +3,14 @@ class ProductsController < ApplicationController
 
   before_action :user_is_deleted, except: [:index]
 
+  PER = 8
+
   def index
     if params["genre"]
       @products = Product.where(genre_id: params["genre"])
     else
-      @products = Product.all
+      byebug
+      @products = Product.page(params[:page]).per(PER)
     end
       @genres = Genre.active
   end
