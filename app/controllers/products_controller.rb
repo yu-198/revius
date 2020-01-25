@@ -9,7 +9,6 @@ class ProductsController < ApplicationController
     if params["genre"]
       @products = Product.where(genre_id: params["genre"])
     else
-      byebug
       @products = Product.page(params[:page]).per(PER)
     end
       @genres = Genre.active

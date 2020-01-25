@@ -2,7 +2,7 @@
 	<div class="col-lg-3">
 		<%= render "layouts/adminheader"%>
 	</div>
-	<div class="col-lg-9">
+	<div class="col-lg-9", style ="margin-top: 70px;">
 		<h1>記事一覧画面</h1>
 		<table class="table">
 			<%= link_to new_admins_article_path do %>
@@ -10,9 +10,16 @@
 			<% end %>
 			<% @article.each do |article| %>
 				<tr>
-					<td><%= article.image %></td>
-					<td><%= article.name %></td>
-					<td><%= link_to "編集する", admins_admins_article_index, method: :post %></td>
+					<th>記事名</th>
+					<th></th>
+				</tr>
+				<tr>
+					<td>
+						<%= link_to admins_article_path(article.id) do %>
+							<%= article.name %>
+						<% end %>
+					</td>
+					<td><%= link_to "編集する", edit_admins_article_path(article.id)%></td>
 				</tr>
 			<% end %>
 		</table>

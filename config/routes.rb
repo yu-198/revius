@@ -29,7 +29,7 @@ namespace :admins do
 	end
 	resources :products, except: [:destroy]
 	resources :orders, only: [:show, :update, :index]
-	resources :article, only: [:index, :edit, :create, :update, :new]
+	resources :article, except: [:destroy]
 end
 
 resources :users, only: [:show, :edit, :update] do

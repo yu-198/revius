@@ -72,3 +72,9 @@ gem 'jquery-rails'
 
 gem 'kaminari', '~> 0.17.0'
 
+gem 'bootstrap', '~> 4.0.0'
+
+gem 'simple_form'
+
+gem 'summernote-rails'
+
