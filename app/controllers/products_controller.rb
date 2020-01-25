@@ -6,13 +6,10 @@ class ProductsController < ApplicationController
   PER = 15
 
   def index
-    if params["genre"]
-      @products = Product.where(genre_id: params["genre"])
-    else
-      @products = Product.page(params[:page]).per(PER)
-    end
-      @genres = Genre.active
-      @articles = Article.all
+    @genres = Genre.active
+    @products = Product.page(params[:page]).per(PER)
+    @products = @products.where(genre_id: params["genre"]) if params["genre"]
+    @articles = Article.all
   end
 
   def show
