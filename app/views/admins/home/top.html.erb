@@ -8,10 +8,10 @@
 	<div class="col-lg-3", style= "margin: 0; padding: 0;">
 		<%= render "layouts/adminheader"%>
 	</div>
-	<div class="col-lg-9", style="margin:0; padding: 0;">
+	<div class="col-lg-9", style="margin-top:70px; padding-left: 70px;">
 		<h1>本日購入された商品</h1>
 		<% @order.each do |order| %>
-			<div class="item", style ="margin-top: 85px;">
+			<div class="item">
 				<%= attachment_image_tag order.product, :image, :fill, 150,150 %>
 				<table>
 					<tr>
