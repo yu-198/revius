@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   before_action :user_is_deleted, except: [:index]
 
-  PER = 8
+  PER = 15
 
   def index
     if params["genre"]
@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
       @products = Product.page(params[:page]).per(PER)
     end
       @genres = Genre.active
+      @articles = Article.all
   end
 
   def show

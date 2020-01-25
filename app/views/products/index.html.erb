@@ -2,6 +2,9 @@
 	.item{
 		display: inline-block;
 	}
+	.article{
+	overflow-y: scroll;
+}
 
 </style>
 
@@ -21,7 +24,7 @@
     		<script src="assets/skippr.min.js"></script>
 		</div>
 		<div class="col-lg-3", style ="margin: 0; padding: 0;">
-			<div class="col-lg-3 genre", style ="height: 250px;  width: 100%; margin: 0; padding: 40px 0 0 0;">
+			<div class="col-lg-3 genre", style ="height: 250px;  width: 100%; margin: 0; padding: 80px 0 0 0;">
 				<p style="font-size: 20px; text-align: center;">ジャンルで検索する</p>
 				<div class="col-lg-11">
 					<% @genres.each do |genre|%>
@@ -31,8 +34,17 @@
 					<% end %>
 				</div>
 			</div>
-			<div class="col-lg-3 article", style = "height: 250px; width: 100%; margin: 0; padding: 0;">
-				<p style="font-size: 20px; text-align: center;">記事</p>
+			<div class="col-lg-3", style = "height: 250px; width: 100%; margin: 0; padding: 0;">
+				<p style="font-size: 20px; text-align: center">記事一覧</p>
+				<div class="col-lg-11 article", style ="height: 200px;">
+					<% @articles.each do |article|%>
+						<p style= "font-size: 20px; text-align: center" >
+							<%= link_to article_path(article.id) do %>
+								<%= article.name %>(<%= article.created_at.strftime("%Y-%m-%d %H:%M")%>)
+							<% end %>
+						</p>
+					<% end %>
+				</div>
 			</div>
 		</div>
 		<div class="col-lg-9 each-item", style ="height: 500px; padding: 0; margin-top: 10px;">

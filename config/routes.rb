@@ -42,7 +42,7 @@ resources :orders, only: [:show, :new, :create, :index] do
     end
 resources :products, only: [:show]
 resources :cart_items, only: [:index, :create, :destroy]
-resources :article, only:[:show, :index]
+resources :article, only:[:show]
 
 root to: 'products#index'
 

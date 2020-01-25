@@ -2,14 +2,10 @@
 	<div class="col-lg-3">
 		<%= render "layouts/header"%>
 	</div>
-	<div class="col-lg-9">
+	<div class="col-lg-9", style=" margin-top: 70px;">
+		<h1>記事詳細画面</h1>
 		<%= @article.created_at.strftime("%Y-%m-%d %H:%M")%>
 		<%= @article.name %>
-		<%= @article.product.image %>
-		<%= @article.product.name %>
-		<%= @article.product.introduction %>
-		<%= link_to product_path(@article.product.id) do %>
-			<h3>商品の購入はこちら</h3>
-		<% end %>
+		<%= @article.introduction.html_safe%>
 	</div>
 </div>
