@@ -1,73 +1,73 @@
 <style>
-	.item{
-		display: inline-block;
-	}
-	.article{
-	overflow-y: scroll;
+  .item{
+    display: inline-block;
+  }
+  .article{
+  overflow-y: scroll;
 }
 
 </style>
 
-	<div class="row">
-		<div class="col-lg-3", style ="margin: 0; padding: 0;">
-			<%= render "layouts/header" %>
-		</div>
-		<div class="col-lg-6 photo", style = "height: 500px; padding: 5px 5px 0 0;">
-        	<div class="theTarget">
-            	<div style="background-image: url(assets/aimer.jpg)"></div>
-           		<div style="background-image: url(assets/clear.jpg)"></div>
-            	<div style="background-image: url(assets/cocooil.jpg)"></div>
-            	<div style="background-image: url(assets/plqml.jpg)"></div>
-            	<div style="background-image: url(assets/ronn.jpg)"></div>
-        	</div>
-        	<script src="assets/jquery.min.js"></script>
-    		<script src="assets/skippr.min.js"></script>
-		</div>
-		<div class="col-lg-3", style ="margin: 0; padding: 0;">
-			<div class="col-lg-3 genre", style ="height: 250px;  width: 100%; margin: 0; padding: 80px 0 0 0;">
-				<p style="font-size: 20px; text-align: center;">ジャンルで検索する</p>
-				<div class="col-lg-11">
-					<% @genres.each do |genre|%>
-						<%= link_to root_path(genre: genre.id) do %>
-							<span style="font-size: 15px; padding: 8px;"><%= genre.name %></span>
-						<% end %>
-					<% end %>
-				</div>
-			</div>
-			<div class="col-lg-3", style = "height: 250px; width: 100%; margin: 0; padding: 0;">
-				<p style="font-size: 20px; text-align: center">記事一覧</p>
-				<div class="col-lg-11 article", style ="height: 200px;">
-					<% @articles.each do |article|%>
-						<p style= "font-size: 20px; text-align: center" >
-							<%= link_to article_path(article.id) do %>
-								<%= article.name %>(<%= article.created_at.strftime("%Y-%m-%d %H:%M")%>)
-							<% end %>
-						</p>
-					<% end %>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-9 each-item", style ="height: 500px; padding: 0; margin-top: 10px;">
-			<% @products.each do |product|%>
-			<div class="item", style="height: 280px; padding: 10px;">
-				<%= link_to product_path(product.id) do %>
-					<%= attachment_image_tag product, :image, :fill, 180 ,180 %><br>
-				<% end %>
-				<span>商品名:</span>
-					<span><%= product.name %></span><br>
-				<span>価格:</span>
-					<span><%= product.price %>円(税抜価格)</span><br>
-				<span>ジャンル名:</span>
-					<span><%= product.genre.name %></span><br>
-				<span>現在:</span>
-				<% if product.is_stopped == false %>
-					<span>販売中</span>
-				<% elsif product.is_stopped == true %>
-					<span>販売停止</span>
-				<% end %>
-			</div>
-			<% end %>
-			<%= paginate @products %>
+  <div class="row">
+    <div class="col-lg-3", style ="margin: 0; padding: 0;">
+      <%= render "layouts/header" %>
+    </div>
+    <div class="col-lg-6 photo", style = "height: 500px; padding: 5px 5px 0 0;">
+          <div class="theTarget">
+              <div style="background-image: #{asset-path('aimer.jpg')}"></div>
+              <div style="background-image: #{asset-path('clear.jpg')}"></div>
+              <div style="background-image: #{asset-path('cocooil.jpg')}"></div>
+              <div style="background-image: #{asset-path('plqml.jpg')}"></div>
+              <div style="background-image: #{asset-path('ronn.jpg')}"></div>
+          </div>¨
+          <%= javascript_include_tag('jquery.min') %>
+          <%= javascript_include_tag('skippr.min') %>
+    </div>
+    <div class="col-lg-3", style ="margin: 0; padding: 0;">
+      <div class="col-lg-3 genre", style ="height: 250px;  width: 100%; margin: 0; padding: 80px 0 0 0;">
+        <p style="font-size: 20px; text-align: center;">ジャンルで検索する</p>
+        <div class="col-lg-11">
+          <% @genres.each do |genre|%>
+            <%= link_to root_path(genre: genre.id) do %>
+              <span style="font-size: 15px; padding: 8px;"><%= genre.name %></span>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-lg-3", style = "height: 250px; width: 100%; margin: 0; padding: 0;">
+        <p style="font-size: 20px; text-align: center">記事一覧</p>
+        <div class="col-lg-11 article", style ="height: 200px;">
+          <% @articles.each do |article|%>
+            <p style= "font-size: 20px; text-align: center" >
+              <%= link_to article_path(article.id) do %>
+                <%= article.name %>(<%= article.created_at.strftime("%Y-%m-%d %H:%M")%>)
+              <% end %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-9 each-item", style ="height: 500px; padding: 0; margin-top: 10px;">
+      <% @products.each do |product|%>
+      <div class="item", style="height: 280px; padding: 10px;">
+        <%= link_to product_path(product.id) do %>
+          <%= attachment_image_tag product, :image, :fill, 180 ,180 %><br>
+        <% end %>
+        <span>商品名:</span>
+          <span><%= product.name %></span><br>
+        <span>価格:</span>
+          <span><%= product.price %>円(税抜価格)</span><br>
+        <span>ジャンル名:</span>
+          <span><%= product.genre.name %></span><br>
+        <span>現在:</span>
+        <% if product.is_stopped == false %>
+          <span>販売中</span>
+        <% elsif product.is_stopped == true %>
+          <span>販売停止</span>
+        <% end %>
+      </div>
+      <% end %>
+      <%= paginate @products %>
 
-		</div>
-	</div>
+    </div>
+  </div>
