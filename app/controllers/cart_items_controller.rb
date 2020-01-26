@@ -1,4 +1,4 @@
-class CartItemsController < ApplicationController
+# class CartItemsController < ApplicationController
 	# before_action :authenticate_user!
 	# before_action :user_is_deleted
 #   def index
