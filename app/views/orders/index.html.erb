@@ -5,14 +5,16 @@
 </style>
 
 <div class="row">
-	<div class="col-lg-3", style ="margin: 0; padding: 0;">
+	<div class="col-lg-3">
 		<%= render "layouts/header" %>
 	</div>
-	<div class="col-lg-9", style ="margin: 0; padding: 0; height: 500px; width: 1000px;">
+	<div class="col-lg-9", style ="margin-top: 70px;">
 		<h1>注文履歴一覧</h1>
 		<% @order.each do |order| %>
 			<div class="item", style = "width: 260px; height: 280px; margin-top: 10px;">
-				<%= attachment_image_tag serch_product(order), :image, :fill, 180, 180 %><br>
+				<%= link_to product_path(order.id) do %>
+					<%= attachment_image_tag serch_product(order), :image, :fill, 180, 180 %><br>
+				<% end %>
 				<span>注文日</span>
 					<span><%= order.created_at.strftime('%Y/%m/%d')%></span><br>
 				<span>注文者</span>

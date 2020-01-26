@@ -1,8 +1,8 @@
  <div class="row">
- 	<div class="col-lg-3", style="margin: 0; padding: 0;">
+ 	<div class="col-lg-3">
 		<%= render "layouts/adminheader"%>
  	</div>
- 	<div class="col-lg-9", style="margin-top: 60px; padding-left: 30px;">
+ 	<div class="col-lg-9", style="margin-top: 70px;">
 	 	<h1>顧客編集画面</h1>
 	 	<%= form_for(@user, url:admins_user_path, method: :patch) do |f| %>
 	 	<div class="form-group">
@@ -36,9 +36,9 @@
 		 	<%= f.text_field :email %>
 	 	</div>
 	 	<% if @user.is_deleted == false %>
-	 		<%= link_to "会員にする",unavailable_admins_user_path(@user.id), method: :patch %>
+	 		<%= link_to "退会させる",unavailable_admins_user_path(@user.id), method: :patch %>
 	 	<% else %>
-	 		<%= link_to "退会させる",available_admins_user_path(@user.id), method: :patch %>
+	 		<%= link_to "会員にする",available_admins_user_path(@user.id), method: :patch %>
 	 	<% end %>
 	 	<%= f.submit "変更を保存する" %>
 	 	<% end %>
