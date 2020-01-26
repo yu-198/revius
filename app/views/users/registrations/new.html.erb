@@ -49,7 +49,7 @@
        <label>パスワード(確認用)</label><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
-      <div class="actions">
+      <div class="actions", style = "margin-top: 5px;">
         <%= f.submit "登録する" %>
       </div>
       <%= link_to new_user_session_path do %>

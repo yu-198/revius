@@ -40,5 +40,15 @@
 				<li><%=link_to "logout",destroy_admin_session_path, method: :delete, class: "link"%></li>
 			</ul>
 		</div>
+	<% else %>
+		<div>
+			<img src="/assets/logo.jpg", class="logo">
+		</div>
+			<div>
+				<ul class="list">
+					<li><%=link_to "Sign_up",new_admin_registration_path, class: "link" %></li>
+					<li><%=link_to "Login", new_admin_session_path, class: "link" %></li>
+				</ul>
+			</div>
 	<% end %>
 </div>
