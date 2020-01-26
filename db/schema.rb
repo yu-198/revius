@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_01_25_123830) do
 
   create_table "articles", force: :cascade do |t|
     t.string "name", null: false
-    t.text "introduction", null: false
+    t.text "introduction", limit: 4294967295, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "product_id"
