@@ -40,7 +40,7 @@
           <% @articles.each do |article|%>
             <p style= "font-size: 20px; text-align: center" >
               <%= link_to article_path(article.id) do %>
-                <%= article.name %>(<%= article.created_at.strftime("%Y-%m-%d %H:%M")%>)
+                <%= article.name %><br>(<%= article.created_at.strftime("%Y-%m-%d")%>)
               <% end %>
             </p>
           <% end %>

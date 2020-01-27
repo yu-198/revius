@@ -7,7 +7,11 @@ class User < ApplicationRecord
 
   VALID_EMAIL_REGEX = /\A\d{10,11}\z/
   validates :phone,presence: true, format: {with: VALID_EMAIL_REGEX}
-  validates :last_name, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/}
-  validates :first_name, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/}
-  validates :postal_code, format: /\A[0-9]+\z/
+  validates :last_name_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/}
+  validates :first_name_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/}
+  validates :postal_code, presence: true, format: /\A[0-9]+\z/
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :email, presence: true
+  validates :address, presence: true
 end

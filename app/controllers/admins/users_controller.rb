@@ -15,8 +15,10 @@ class Admins::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
+      flash[:success] = "更新成功しました"
       redirect_to admins_users_path
     else
+      flash[:danger] = "入力内容を確認してください"
       render :edit
     end
   end

@@ -10,8 +10,10 @@ class Admins::ArticleController < ApplicationController
 	def create
 		@article = Article.new(article_params)
 		if @article.save
+			flash[:success] = "登録に成功しました"
 		 	redirect_to admins_article_index_path
 		else
+			flash[:danger] = "入力内容を確認してください"
 			render :new
 		end
 	end
@@ -27,8 +29,10 @@ class Admins::ArticleController < ApplicationController
 	def update
 		@article = Article.find(params[:id])
 		if@article.update(article_params)
+			flash[:success] = "登録に成功しました"
 		  redirect_to admins_article_index_path
 		else
+			flash[:danger] = "入力内容を確認してください"
 		  render :edit
 		end
 	end
