@@ -9,8 +9,10 @@
 				<label>記事名</label>
 				<%= f.text_field :name %>
 			</div>
+			<div class="col-lg-9">
 			<%= f.input :introduction, as: :summernote %>
-			<div class="btn-group">
+			</div>
+			<div class="col-lg-9">
 				<%= f.submit "登録する"%>
 			</div>
 		<% end %>
