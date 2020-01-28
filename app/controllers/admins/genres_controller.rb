@@ -29,7 +29,7 @@ class Admins::GenresController < ApplicationController
        redirect_to admins_genres_path
     else
        flash[:danger] = "入力内容を確認してください"
-      render :edit
+       render :edit
     end
   end
 

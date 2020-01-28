@@ -28,7 +28,7 @@ namespace :admins do
 		end
 	end
 	resources :products, except: [:destroy]
-	resources :orders, only: [:show, :update, :index]
+	resources :orders, only: [:index]
 	resources :article, except: [:destroy]
 end
 
@@ -37,7 +37,7 @@ resources :users, only: [:show, :edit, :update] do
 		 patch :leave
 	end
 end
-resources :orders, only: [:show, :new, :create, :index] do
+resources :orders, only: [:create, :index] do
 	  collection {get "finish"}
     end
 resources :products, only: [:show]

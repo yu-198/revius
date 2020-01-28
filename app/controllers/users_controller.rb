@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :user_is_deleted
-
   before_action :ensure_current_user,{only:[:edit, :update]}
   before_action :baria_user
 
@@ -37,7 +36,7 @@ class UsersController < ApplicationController
   	params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :address, :postal_code, :phone, :email)
   end
   def user_is_deleted
-    if current_user.is_deleted?
+    if user_signed_in? && current_user.is_deleted?
       redirect_to root_path
     end
   end

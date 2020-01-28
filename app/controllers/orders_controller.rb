@@ -14,30 +14,24 @@ class OrdersController < ApplicationController
       product = Product.find(params[:order][:product_id])
 
       if (product.stock - @order.quantity) < 0
-        product.is_stopped = true
-        product.save
-        flash[:danger] = "この商品の在庫がなくなりました"
-        render :show
+         product.is_stopped = true
+         product.save
+         flash[:danger] = "この商品の在庫がなくなりました"
+         render :show
       end
 
       @order.price = product.tax_include_price
     if @order.save
-      product.stock  -= @order.quantity
-      if  product.stock == 0
-        product.is_stopped = true
-        product.save
-        flash[:danger] = "この商品の在庫がなくなりました"
+       product.stock  -= @order.quantity
+      if product.stock == 0
+         product.is_stopped = true
+         product.save
+         flash[:danger] = "この商品の在庫がなくなりました"
       end
-      redirect_to finish_orders_path
+         redirect_to finish_orders_path
     else
-      render :edit
+         render :edit
     end
-  end
-
-  def show
-  end
-
-  def new
   end
 
   def finish
