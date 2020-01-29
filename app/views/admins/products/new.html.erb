@@ -2,6 +2,15 @@
 	<div class="col-lg-3", style = "margin:0; padding: 0;">
 		<%= render "layouts/adminheader" %>
 	</div>
+	<% if @product.errors.any? %>
+	  <div id="error_explanation" class="alert alert-danger">
+	    <ul>
+	      <% @product.errors.full_messages.each do |message| %>
+	        <li><%= message %></li>
+	      <% end %>
+	    </ul>
+	  </div>
+	<% end %>
 	<div class="col-lg-9", style = "margin-top: 70px; padding-left: 30px;">
 		<h1>新規登録画面</h1>
 		<%= form_for(@product, url:admins_products_path) do |f| %>

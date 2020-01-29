@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
 	belongs_to :genre
 	has_many :orders
-	belongs_to :article
+	has_many :articles
 	attachment :image
 	validates :introduction, presence: true, length: { maximum: 100 }
 	validates :name, presence: true

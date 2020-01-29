@@ -19,7 +19,6 @@ class OrdersController < ApplicationController
          flash[:danger] = "この商品の在庫がなくなりました"
          render :show
       end
-
       @order.price = product.tax_include_price
     if @order.save
        product.stock  -= @order.quantity

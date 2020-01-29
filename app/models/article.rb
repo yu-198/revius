@@ -1,5 +1,5 @@
 class Article < ApplicationRecord
-	has_many :products
+	belongs_to :product
 	validates :name, presence: true
 	validates :introduction, presence: true
 end
