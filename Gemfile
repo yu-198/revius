@@ -71,6 +71,6 @@ gem 'kaminari', '~> 0.17.0'
 gem 'bootstrap', '~> 4.0.0'
 gem 'simple_form'
 gem 'summernote-rails'
-group :production do
-  gem 'mysql2'
-end
+# group :production do
+#   gem 'mysql2'
+# end
