@@ -2,10 +2,11 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :user_is_deleted
 
-
+  PER = 12
   def index
       @user = User.find(current_user.id)
       @order = Order.where(user_id: @user.id)
+      @order = Order.page(params[:page]).per(PER)
   end
 
   def create
