@@ -28,12 +28,12 @@
           <%= javascript_include_tag('skippr.min') %>
     </div>
     <div class="col-lg-3">
-      <div class="col-lg-3 genre", style ="height: 250px;  width: 100%; margin: 0; padding: 80px 0 0 0;">
+      <div class="col-lg-3 genre", style ="height: 250px;  width: 100%; margin: 0; padding: 40px 0 0 0;">
         <p style="font-size: 20px; text-align: center;">ジャンルで検索する</p>
-        <div class="col-lg-11">
+        <div class="col-lg-11" style="text-align: center;">
           <% @genres.each do |genre|%>
             <%= link_to root_path(genre: genre.id) do %>
-              <span style="font-size: 15px; padding: 8px;"><%= genre.name %></span>
+              <span class="btn btn-info" style="font-size: 15px; margin: 2px; padding: 8px;"><%= genre.name %></span>
             <% end %>
           <% end %>
         </div>
