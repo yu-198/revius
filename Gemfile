@@ -68,7 +68,7 @@ gem "refile-mini_magick"
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 gem 'kaminari', '~> 0.17.0'
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', '~> 4.3.1'
 gem 'simple_form'
 gem 'summernote-rails'
 # group :production do
