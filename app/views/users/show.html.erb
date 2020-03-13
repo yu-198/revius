@@ -1,9 +1,14 @@
 <style>
-	th{
-		font-size: 15px;
+	.user th{
+		font-size: 20px;
+		margin: 5px;
 	}
-	td{
-		font-size: 15px;
+	.user td{
+		font-size: 20px;
+		margin: 5px;
+	}
+	.user a{
+		text-decoration:none;
 	}
 </style>
 <div class="row">
@@ -13,7 +18,7 @@
 	<div class="col-lg-9", style="margin-top:70px;">
 		<div>
 			<h1>マイページ</h1>
-			<table>
+			<table class="user ">
 					<tr>
 						<th>名前</th>
 						<td><%= @user.first_name %></td>
@@ -41,15 +46,17 @@
 						<td><%= @user.email %></td>
 					</tr>
 			</table>
-			<%= link_to edit_user_registration_path do %>
-				<span>パスワードを編集する</span>
-			<% end %>
-			<%= link_to edit_user_path(@user) do %>
-				<span>登録情報の登録</span>
-			<% end %>
-			<%= link_to orders_path do %>
-				<h4>注文履歴</h4>
-			<% end %>
+			<div class="user">
+				<%= link_to edit_user_registration_path do %>
+					<span class="btn btn-info" style="margin: 5px 0 5px 0; ">パスワードを編集する</span>
+				<% end %><br>
+				<%= link_to edit_user_path(@user) do %>
+					<span class="btn btn-info" style="margin-top: 5px;">登録情報の登録</span>
+				<% end %><br>
+				<%= link_to orders_path do %>
+					<h4 class="btn btn-info" >注文履歴</h4>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>
