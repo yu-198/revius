@@ -37,7 +37,7 @@ resources :users, only: [:show, :edit, :update] do
 		 patch :leave
 	end
 end
-resources :orders, only: [:create, :index] do
+resources :orders, only: [:create, :index, :show] do
 	  collection {get "finish"}
     end
 resources :products, only: [:show]

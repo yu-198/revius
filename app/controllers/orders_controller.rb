@@ -3,10 +3,15 @@ class OrdersController < ApplicationController
   before_action :user_is_deleted
 
   PER = 12
+
   def index
       @user = User.find(current_user.id)
       @order = Order.where(user_id: @user.id)
       @order = Order.page(params[:page]).per(PER)
+  end
+
+  def show
+      @order = Order.find(params[:id])
   end
 
   def create
