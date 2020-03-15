@@ -13,6 +13,9 @@
 					<td><p>注文ID <%= @order.id %></p></td>
 				</tr>
 				<tr>
+					<td><p>購入者 <%= @order.user.first_name %><%= @order.user.last_name%></p></td>
+				</tr>
+				<tr>
 					<td><p>注文合計 <%= total_price(@order)%>円（税込価格＋送料込み）</p></td>
 				</tr>
 			</table>
@@ -45,7 +48,10 @@
 					<td><p>個数：<%= @order.quantity %></p></td>
 				</tr>
 				<tr>
-					<td><p>注文合計：<%= total_price(@order)%>円（税込価格＋送料込み）</p></td>
+					<td><p>送料： <%= @order.postage %>円</p></td>
+				</tr>
+				<tr>
+					<td><p>商品合計：<%= @order.quantity * @order.price %>円（税込価格）</p></td>
 				</tr>
 			</table>
 		</div>
@@ -54,9 +60,11 @@
 				<tr>
 					<td><p>支払い方法: <%= @order.payment %></p></td>
 				</tr>
-				<tr>
-					<td><p>現在の商品の状態: <%= @order.delivery_status %></p></td>
-				</tr>
+					<tr>
+						<td>
+							<p>現在の商品の状態: <%= @order.delivery_status %></p>
+						</td>
+					</tr>
 			</table>
 		</div>
 	</div>
