@@ -1,3 +1,11 @@
+<style>
+	.table th{
+		text-align: center;
+	}
+	.table td{
+		text-align: center;
+	}
+</style>
 <div class="row">
 	<div class="col-lg-3">
 		<%= render "layouts/adminheader"%>
@@ -5,37 +13,33 @@
 	<div class="col-lg-9", style = "margin-top: 70px;">
 		<h1>商品一覧ページ</h1>
 		<%= link_to new_admins_product_path do %>
-			<span>新規登録画面へ</span>
+			<span class="btn btn-info" style = "margin-bottom: 10px;">新規登録画面へ</span>
 		<% end %>
 		<table class="table">
 			<tr>
 				<th>Id</th>
 				<th>画像</th>
 				<th>商品名</th>
-				<th>価格(税抜価格)</th>
-				<th>ジャンル</th>
 				<th>販売ステータス</th>
-				<th>在庫数</th>
+				<th></th>
 			</tr>
 			<% @products.each do |product| %>
 				<tr>
-					<td><%= product.id %></td>
-					<td><%= attachment_image_tag product, :image, :fill, 50, 50 %></td>
-					<td>
-						<%= link_to admins_product_path(product.id) do %>
-							<%= product.name %>
-						<% end %>
-					</td>
-					<td><%= product.price %>円</td>
-					<td><%= product.genre.name %></td>
+					<td><p><%= product.id %></p></td>
+					<td><p><%= attachment_image_tag product, :image, :fill, 50, 50 %></p></td>
+					<td><p><%= product.name %></p></td>
 					<td>
 						<% if product.is_stopped? %>
-							<span>販売停止</span>
+							<span style = "background-color: #FF0000; " class="badge">販売停止</span>
 						<% else %>
-							<span>販売中</span>
+							<span style = "background-color: #000080" class="badge">販売中</span>
 						<% end %>
 					</td>
-					<td><%= product.stock %>個</td>
+					<td>
+						<%= link_to admins_product_path(product.id) do %>
+							<span class="btn btn-success">商品内容の表示</span>
+						<% end %>
+					</td>
 				</tr>
 			<% end %>
 		</table>

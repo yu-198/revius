@@ -3,6 +3,12 @@
 		text-decoration:none;
 		color: #555555;
 	}
+	.table th{
+		text-align: center;
+	}
+	.table td{
+		text-align: center;
+	}
 </style>
 
 
@@ -23,14 +29,23 @@
 					</tr>
 					<% @order.each do |order| %>
 					<tr>
-						<td><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-						<td><%= order.user.first_name %><%= order.user.last_name %></td>
-						<td><%= order.product.name %></td>
-						<td><%= order.quantity %>個</td>
-						<td><%= order.delivery_status %></td>
+						<td><p><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></p></td>
+						<td><p><%= order.user.first_name %><%= order.user.last_name %></p></td>
+						<td><p><%= order.product.name %></p></td>
+						<td><p><%= order.quantity %>個</p></td>
+						<td>
+							<% case order.delivery_status %>
+								<% when "入金待ち"%>
+									<span class="badge" style="background-color: red;"><%= order.delivery_status %></span>
+								<% when "発送待ち"%>
+									<span class="badge" style="background-color: #555555"><%= order.delivery_status %></span>
+								<% when "発送済み"%>
+									<span class="badge" style ="background-color: blue;"><%= order.delivery_status%></span>
+							<% end %>
+						</td>
 						<td>
 							<%= link_to admins_order_path(order.id) do %>
-								<p>注文内容の表示</p>
+								<span class="btn btn-info">注文内容の表示</span>
 							<% end %>
 						</td>
 					</tr>

@@ -10,7 +10,7 @@
 					<label>ジャンル</label>
 					<%= f.text_field :name %>
 				</div>
-				<div class="btn-group">
+				<div class="btn-group" style =" margin-bottom: 10px;">
 					<%= f.submit "追加"%>
 				</div>
 			<% end %>
@@ -25,13 +25,19 @@
 						<td><%= genre.name %></td>
 						<td>
 							<% if genre.is_disable == false %>
-								<%= link_to "無効にする", disable_admins_genre_path(genre), method: :patch %>
+								<%= link_to disable_admins_genre_path(genre), method: :patch do %>
+									<span class="btn btn-danger">無効にする</span>
+								<% end %>
 							<% elsif genre.is_disable == true %>
-								<%= link_to "有効にする", enable_admins_genre_path(genre), method: :patch %>
+								<%= link_to enable_admins_genre_path(genre), method: :patch  do %>
+									<span class="btn btn-success">有効にする</span>
+								<% end %>
 							<% end %>
 						</td>
 						<td>
-							<%= link_to " 編集する", edit_admins_genre_path(genre.id) %>
+							<%= link_to edit_admins_genre_path(genre.id) do %>
+								<span class="btn btn-info">編集する</span>
+							<% end %>
 						</td>
 					</tr>
 				<% end %>

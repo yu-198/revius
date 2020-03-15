@@ -1,3 +1,12 @@
+<style>
+	.table th{
+		text-align: center;
+	}
+	.table td{
+		text-align: center;
+	}
+</style>
+
 <div class="row">
 	<div class="col-lg-3">
 		<%= render "layouts/adminheader"%>
@@ -14,17 +23,22 @@
 			</tr>
 			<% @user.each do |user| %>
 			<tr>
-				<td><%= user.id %></td>
-				<td><%= user.first_name %> <%= user.last_name %></td>
-				<td><%= user.email %></td>
+				<td><p><%= user.id %></p></td>
+				<td><p><%= user.first_name %> <%= user.last_name %></p></td>
+				<td><p><%= user.email %></p></td>
 				<td>
-					<% if user.is_deleted == false %>
-						<span>有効会員</span>
-					<% else %>
-						<span>退会済み</span>
+					<p>
+						<% if user.is_deleted == false %>
+							<span style = "background-color: #000080;" class= "badge">有効会員</span>
+						<% else %>
+							<span style = "background-color: #00FF00;"class="badge">退会済み</span>
+						<% end %>
+					</p>
+				</td>
+				<td><%= link_to edit_admins_user_path(user.id) do %>
+						<span class="btn btn-info">編集する</span>
 					<% end %>
 				</td>
-				<td><%= link_to "編集する", edit_admins_user_path(user.id) %></td>
 			</tr>
 			<% end %>
 		</table>

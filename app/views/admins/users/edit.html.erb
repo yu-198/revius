@@ -1,46 +1,57 @@
+<style>
+	.form-group{
+		margin: 10px 0 10px 0;
+	}
+</style>
+
+
  <div class="row">
  	<div class="col-lg-3">
 		<%= render "layouts/adminheader"%>
  	</div>
  	<div class="col-lg-9", style="margin-top: 70px;">
 	 	<h1>顧客編集画面</h1>
-	 	<%= form_for(@user, url:admins_user_path, method: :patch) do |f| %>
-	 	<div class="form-group">
-		 	<label>会員ID</label>
-		 	<%= @user.id %>
-	 	</div>
-	 	<div class="form_group">
-		 	<label>氏名</label>
-			 <%= f.text_field :first_name %>
-			 <%= f.text_field :last_name %>
-	 	</div>
-	 	<div class="form_group">
-	 		<label>フリガナ</label>
-	 		<%= f.text_field :first_name_kana %>
-	 		<%= f.text_field :last_name_kana %>
-	 	</div>
-	 	<div class="form-group">
-		 	<label>郵便番号(ハイフン無し)</label>
-		 	<%= f.text_field :postal_code %>
-	 	</div>
-	 	<div class="form-group">
-		 	<label>住所</label>
-		 	<%= f.text_field :address %>
-	 	</div>
-	 	<div class="form-group">
-		 	<label>電話番号</label>
-		 	<%= f.text_field :phone %>
-	 	</div>
-	 	<div class="form-group">
-		 	<label>メールアドレス</label>
-		 	<%= f.text_field :email %>
-	 	</div>
 	 	<% if @user.is_deleted == false %>
-	 		<%= link_to "退会させる",unavailable_admins_user_path(@user.id), method: :patch %>
+	 		<%= link_to unavailable_admins_user_path(@user.id), method: :patch do %>
+	 			<span class="btn btn-danger">退会させる</span>
+	 		<% end %>
 	 	<% else %>
-	 		<%= link_to "会員にする",available_admins_user_path(@user.id), method: :patch %>
+	 		<%= link_to available_admins_user_path(@user.id), method: :patch do %>
+	 			<span class="btn btn-info">会員にする</span>
+	 		<% end %>
 	 	<% end %>
-	 	<%= f.submit "変更を保存する" %>
+	 	<%= form_for(@user, url:admins_user_path, method: :patch) do |f| %>
+		 	<div class="form-group">
+			 	<label>会員ID</label>
+			 	<%= @user.id %>
+		 	</div>
+		 	<div class="form-group">
+			 	<label>氏名</label>
+				 <%= f.text_field :first_name %>
+				 <%= f.text_field :last_name %>
+		 	</div>
+		 	<div class="form-group">
+		 		<label>フリガナ</label>
+		 		<%= f.text_field :first_name_kana %>
+		 		<%= f.text_field :last_name_kana %>
+		 	</div>
+		 	<div class="form-group">
+			 	<label>郵便番号(ハイフン無し)</label>
+			 	<%= f.text_field :postal_code %>
+		 	</div>
+		 	<div class="form-group">
+			 	<label>住所</label>
+			 	<%= f.text_field :address %>
+		 	</div>
+		 	<div class="form-group">
+			 	<label>電話番号</label>
+			 	<%= f.text_field :phone %>
+		 	</div>
+		 	<div class="form-group">
+			 	<label>メールアドレス</label>
+			 	<%= f.text_field :email %>
+		 	</div>
+		 		<%= f.submit "変更を保存する" %>
 	 	<% end %>
 	 </div>
  </div>

@@ -6,35 +6,24 @@
 		<div>
 			<%= attachment_image_tag @product, :image, :fill, 500, 500 %>
 			<table>
+				<tr><td><p>商品名：<%= @product.name %></p></td></tr>
+				<tr><td><p>商品説明：<%= @product.introduction %></p></td></tr>
+				<tr><td><p>ジャンル：<%= @product.genre.name %></p></td></tr>
+				<tr><td><p>価格：<%= addTax(@product.price) %>円(税込価格)</p></td></tr>
 				<tr>
-					<th>商品名</th>
-					<td><%= @product.name %></td>
-				</tr>
-				<tr>
-					<th>商品説明</th>
-					<td><%= @product.introduction %></td>
-				</tr>
-				<tr>
-					<th>ジャンル</th>
-					<td><%= @product.genre.name %></td>
-				</tr>
-				<tr>
-					<th>価格(税込価格)</th>
-					<td><%= addTax(@product.price) %> (<%=@product.price%>)円</td>
-				</tr>
-				<tr>
-					<th>販売ステータス</th>
 					<td>
-						<% if @product.is_stopped == false %>
-							販売中
-						<% elsif @product.is_stopped == true %>
-							販売停止
-						<% end %>
+						<p>販売ステータス：
+							<% if @product.is_stopped == false %>
+								販売中
+							<% elsif @product.is_stopped == true %>
+								販売停止
+							<% end %>
+						</p>
 					</td>
 				</tr>
 			</table>
 			<%= link_to edit_admins_product_path(@product.id) do %>
-				<span class="btn btn-default">編集する</span>
+				<span class="btn btn-info">編集する</span>
 			<% end %>
 		</div>
 	</div>
