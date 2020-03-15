@@ -28,7 +28,7 @@ namespace :admins do
 		end
 	end
 	resources :products, except: [:destroy]
-	resources :orders, only: [:index]
+	resources :orders, only: [:index, :show]
 	resources :article, except: [:destroy]
 end
 

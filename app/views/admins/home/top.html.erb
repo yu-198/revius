@@ -2,6 +2,10 @@
 	.item{
 		display: inline-block;
 	}
+	.user a{
+		text-decoration:none;
+		color: #555555;
+	}
 </style>
 
 <div class="row">
@@ -13,31 +17,24 @@
 		<% @order.each do |order| %>
 			<div class="item">
 				<%= attachment_image_tag order.product, :image, :fill, 150,150 %>
-				<table>
+				<table class="user">
 					<tr>
-						<th>購入日</th>
-						<td><%=  order.created_at.strftime('%Y/%m/%d') %></td>
+						<td><p>購入日: <%=  order.created_at.strftime('%Y/%m/%d') %></p></td>
 					</tr>
 					<tr>
-						<th>商品名</th>
-						<td><%= order.product.name %></td>
+						<td><p>商品名: <%= order.product.name %></p></td>
 					</tr>
 					<tr>
-						<th>支払い金額</th>
-						<td><%= total_price(order) %>円(税込み + 送料 )</td>
+						<td><p>購入個数: <%= order.quantity%>個</p></td>
 					</tr>
 					<tr>
-						<th>購入個数</th>
-						<td><%= order.quantity%>個</td>
+						<td>
+							<%= link_to admins_order_path(order.id) do %>
+								<p>注文内容の表示</p>
+							<% end%>
+						</td>
 					</tr>
-					<tr>
-						<th>支払い方法</th>
-						<td><%= order.payment %></td>
-					</tr>
-					<tr>
-						<th>配送状況</th>
-						<td><%= order.delivery_status %></td>
-					</tr>
+
 				</table>
 			</div>
 		<% end %>

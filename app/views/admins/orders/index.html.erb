@@ -1,9 +1,16 @@
+<style>
+	.table a{
+		text-decoration:none;
+		color: #555555;
+	}
+</style>
+
+
 <div class="row">
 	<div class="col-lg-3">
 		<%= render "layouts/adminheader"%>
 	</div>
 	<div class="col-lg-9", style="margin-top: 70px;">
-		<div>
 			<h1>注文履歴一覧</h1>
 			<table class="table">
 					<tr>
@@ -12,6 +19,7 @@
 						<th>注文商品</th>
 						<th>注文個数</th>
 						<th>支払いステータス</th>
+						<th></th>
 					</tr>
 					<% @order.each do |order| %>
 					<tr>
@@ -20,9 +28,16 @@
 						<td><%= order.product.name %></td>
 						<td><%= order.quantity %>個</td>
 						<td><%= order.delivery_status %></td>
+						<td>
+							<%= link_to admins_order_path(order.id) do %>
+								<p>注文内容の表示</p>
+							<% end %>
+						</td>
 					</tr>
 					<% end %>
 			</table>
-		</div>
+			<div class="page">
+        		<%= paginate @order %>
+			</div>
 	</div>
 </div>

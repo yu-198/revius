@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   def index
       @user = User.find(current_user.id)
       @order = Order.where(user_id: @user.id)
-      @order = Order.page(params[:page]).per(PER)
+      @order = Order.page(params[:page]).per(PER).order('updated_at DESC')
   end
 
   def show
