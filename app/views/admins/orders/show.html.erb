@@ -6,34 +6,18 @@
 		<h1>購入詳細</h1>
 		<div style = "margin-top: 50px;">
 			<table>
-				<tr>
-					<td><p>注文日 <%= @order.created_at.strftime('%Y/%m/%d') %></p></td>
-				</tr>
-				<tr>
-					<td><p>注文ID <%= @order.id %></p></td>
-				</tr>
-				<tr>
-					<td><p>購入者 <%= @order.user.first_name %><%= @order.user.last_name%></p></td>
-				</tr>
-				<tr>
-					<td><p>注文合計 <%= total_price(@order)%>円（税込価格＋送料込み）</p></td>
-				</tr>
+				<tr><td><p>注文日 <%= @order.created_at.strftime('%Y/%m/%d') %></p></td></tr>
+				<tr><td><p>注文ID <%= @order.id %></p></td></tr>
+				<tr><td><p>購入者 <%= @order.user.first_name %><%= @order.user.last_name%></p></td></tr>
+				<tr><td><p>注文合計 <%= total_price(@order)%>円（税込価格＋送料込み）</p></td></tr>
 			</table>
 		</div>
 		<div style ="margin-top: 50px;">
 			<table>
-				<tr>
-					<td><strong>請求先住所</strong></td>
-				</tr>
-				<tr>
-					<td><p>郵便番号：<%= @order.user.postal_code %></p></td>
-				</tr>
-				<tr>
-					<td><p>住所：<%= @order.user.address %></p></td>
-				</tr>
-				<tr>
-					<td><p>携帯番号：<%= @order.user.phone %></p></td>
-				</tr>
+				<tr><td><strong>請求先住所</strong></td></tr>
+				<tr><td><p>郵便番号：<%= @order.user.postal_code %></p></td></tr>
+				<tr><td><p>住所：<%= @order.user.address %></p></td></tr>
+				<tr><td><p>携帯番号：<%= @order.user.phone %></p></td></tr>
 			</table>
 		</div>
 		<div class="col-lg-3" style = "margin-top: 50px;">
@@ -41,27 +25,13 @@
 		</div>
 		<div class="col-lg-6" style = "margin: 50px 0 0 60px;">
 			<table>
-				<tr>
-					<td><p>商品名：<%= @order.product.name %></p></td>
-				</tr>
-				<tr>
-					<td><p>個数：<%= @order.quantity %></p></td>
-				</tr>
-				<tr>
-					<td><p>送料： <%= @order.postage %>円</p></td>
-				</tr>
-				<tr>
-					<td><p>商品合計：<%= @order.quantity * @order.price %>円（税込価格）</p></td>
-				</tr>
-				<tr>
-					<td><p>支払い方法: <%= @order.payment %></p></td>
-				</tr>
-					<tr>
-						<td>
-							<p>現在の商品の状態: <%= @order.delivery_status %></p>
-						</td>
-					</tr>
+				<tr><td><p>商品名：<%= @order.product.name %></p></td></tr>
+				<tr><td><p>個数：<%= @order.quantity %></p></td></tr>
+				<tr><td><p>送料： <%= @order.postage %>円</p></td></tr>
+				<tr><td><p>商品合計：<%= @order.quantity * @order.price %>円（税込価格）</p></td></tr>
+				<tr><td><p>支払い方法: <%= @order.payment %></p></td></tr>
+				<tr><td><p>現在の商品の状態: <%= @order.delivery_status %></p></td></tr>
 			</table>
-		</div>
+		</div>d
 	</div>
 </div>

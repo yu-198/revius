@@ -6,28 +6,16 @@
 		<h1>購入詳細</h1>
 		<div style ="margin: 40px 0 40px 0; font-size: 18px;">
 			<table>
-				<tr>
-					<td><p>注文日 <%= @order.created_at.strftime('%Y/%m/%d')%></p></td>
-				</tr>
-				<tr>
-					<td><p>注文の合計 <%=total_price(@order)%> 円（送料込み＋税込価格）</p></td>
-				</tr>
+				<tr><td><p>注文日 <%= @order.created_at.strftime('%Y/%m/%d')%></p></td></tr>
+				<tr><td><p>注文の合計 <%=total_price(@order)%> 円（送料込み＋税込価格）</p></td></tr>
 			</table>
 		</div>
 		<div style="margin: 0 0 40px 0; font-size: 18px;">
 			<table>
-				<tr>
-					<p><strong>請求先住所</strong></p>
-				</tr>
-				<tr>
-					<td><p>郵便番号: <%= @order.user.postal_code%></p></td>
-				</tr>
-				<tr>
-					<td><p>住所: <%= @order.user.address %></p></td>
-				</tr>
-				<tr>
-					<td><p>携帯番号: <%= @order.user.phone%></p></td>
-				</tr>
+				<tr><p><strong>請求先住所</strong></p></tr>
+				<tr><td><p>郵便番号: <%= @order.user.postal_code%></p></td></tr>
+				<tr><td><p>住所: <%= @order.user.address %></p></td></tr>
+				<tr><td><p>携帯番号: <%= @order.user.phone%></p></td></tr>
 			</table>
 		</div>
 		<div class="col-lg-3">
@@ -35,15 +23,9 @@
 		</div>
 		<div class="col-lg-6", style = "margin: 20px 0 0 60px; padding: 10px; font-size: 18px;">
 			<table>
-				<tr>
-					<td><p>商品名: <%= @order.product.name %></p></td>
-				</tr>
-				<tr>
-					<td><p>個数: <%= @order.quantity %></p></td>
-				</tr>
-				<tr>
-					<td><p>注文合計： ¥<%=total_price(@order)%>円</p></td>
-				</tr>
+				<tr><td><p>商品名: <%= @order.product.name %></p></td></tr>
+				<tr><td><p>個数: <%= @order.quantity %></p></td></tr>
+				<tr><td><p>注文合計： ¥<%=total_price(@order)%>円</p></td></tr>
 			</table>
 		</div>
 	</div>

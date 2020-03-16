@@ -13,7 +13,11 @@
 			<%= attachment_image_tag @product, :image, :fill, 500,500 %>
 			<h3>商品名　<%= @product.name %></h3>
 			<p class="introduction">商品説明　<%= @product.introduction%></p>
+			<h4>ジャンル：<%= @product.genre.name %></h4>
 			<h4>価格　<%= addTax(@product.price)%>円(税込価格)</h4>
+			<% if @product.is_stopped == true %>
+				<span class="badge" style ="background-color: green">販売停止</span>
+			<% end %>
 			<% if @product.stock  >  0 %>
 				<%= form_for(@order,url:orders_path) do |f| %>
 					<%= f.hidden_field :product_id %>
@@ -22,9 +26,6 @@
 						<%= f.select :quantity, [*1..@product.stock.to_i] %>
 					<% end %>
 				<% end %>
-			<% end %>
-			<% if @product.is_stopped == true %>
-				<h4>現在販売停止</h4>
 			<% end %>
 		</div>
 	</div>

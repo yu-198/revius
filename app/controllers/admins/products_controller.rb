@@ -16,8 +16,8 @@ class Admins::ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-          flash[:success] = "更新に成功しました"
-          redirect_to admins_products_path
+       flash[:success] = "更新に成功しました"
+       redirect_to admins_products_path
     else
        flash[:danger] = "入力内容を確認してください"
        render :edit
@@ -40,7 +40,7 @@ class Admins::ProductsController < ApplicationController
   end
 
   private
-  def product_params
-    params.require(:product).permit(:image, :name, :introduction, :price, :genre_id, :is_stopped, :stock)
-  end
+    def product_params
+      params.require(:product).permit(:image, :name, :introduction, :price, :genre_id, :is_stopped, :stock)
+    end
 end

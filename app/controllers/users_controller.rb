@@ -15,11 +15,11 @@ class UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
   	if @user.update(user_params)
-      flash[:success] = "更新成功しました"
-  	  redirect_to user_path(current_user.id)
+       flash[:success] = "更新成功しました"
+  	   redirect_to user_path(current_user.id)
   	else
-      flash[:danger] = "入力内容を確認してください"
-  	  render :edit
+       flash[:danger] = "入力内容を確認してください"
+  	   render :edit
   	end
   end
 
@@ -35,6 +35,7 @@ class UsersController < ApplicationController
   def user_params
   	params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :address, :postal_code, :phone, :email)
   end
+
   def user_is_deleted
     if user_signed_in? && current_user.is_deleted?
       redirect_to root_path

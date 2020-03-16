@@ -26,17 +26,17 @@ class OrdersController < ApplicationController
          render :show
       end
       @order.price = product.tax_include_price
-    if @order.save
-       product.stock  -= @order.quantity
-      if product.stock == 0
-         product.is_stopped = true
-         product.save
-         flash[:danger] = "この商品の在庫がなくなりました"
+      if @order.save
+        product.stock  -= @order.quantity
+        if product.stock == 0
+           product.is_stopped = true
+           product.save
+           flash[:danger] = "この商品の在庫がなくなりました"
+        end
+        redirect_to finish_orders_path
+      else
+        render :edit
       end
-         redirect_to finish_orders_path
-    else
-         render :edit
-    end
   end
 
   def finish
@@ -46,6 +46,7 @@ class OrdersController < ApplicationController
   	def order_params
   		params.require(:order).permit(:quantity, :product_id)
   	end
+
     def user_is_deleted
       if user_signed_in? && current_user.is_deleted?
          redirect_to root_path

@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
   private
   def user_is_deleted
     if user_signed_in? && current_user.is_deleted?
-      redirect_to root_path
+       redirect_to root_path
     end
   end
 

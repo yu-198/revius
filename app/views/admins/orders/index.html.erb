@@ -19,15 +19,15 @@
 	<div class="col-lg-9", style="margin-top: 70px;">
 			<h1>注文履歴一覧</h1>
 			<table class="table">
-					<tr>
-						<th>注文日</th>
-						<th>注文者名</th>
-						<th>注文商品</th>
-						<th>注文個数</th>
-						<th>支払いステータス</th>
-						<th></th>
-					</tr>
-					<% @order.each do |order| %>
+				<tr>
+					<th>注文日</th>
+					<th>注文者名</th>
+					<th>注文商品</th>
+					<th>注文個数</th>
+					<th>支払いステータス</th>
+					<th></th>
+				</tr>
+				<% @order.each do |order| %>
 					<tr>
 						<td><p><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></p></td>
 						<td><p><%= order.user.first_name %><%= order.user.last_name %></p></td>
@@ -41,7 +41,7 @@
 									<span class="badge" style="background-color: #555555"><%= order.delivery_status %></span>
 								<% when "発送済み"%>
 									<span class="badge" style ="background-color: blue;"><%= order.delivery_status%></span>
-							<% end %>
+								<% end %>
 						</td>
 						<td>
 							<%= link_to admins_order_path(order.id) do %>
@@ -49,7 +49,7 @@
 							<% end %>
 						</td>
 					</tr>
-					<% end %>
+				<% end %>
 			</table>
 			<div class="page">
         		<%= paginate @order %>
