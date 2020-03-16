@@ -42,7 +42,7 @@
         <div class="col-lg-11" style="text-align: center;">
           <% @genres.each do |genre|%>
             <%= link_to root_path(genre: genre.id) do %>
-              <span class="btn btn-info" style="font-size: 15px; margin: 2px; padding: 8px;"><%= genre.name %></span>
+              <span class="badge"style="font-size: 15px; margin: 2px; padding: 8px; background-color: green;"><%= genre.name %></span>
             <% end %>
           <% end %>
         </div>
