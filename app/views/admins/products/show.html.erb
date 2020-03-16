@@ -10,6 +10,7 @@
 				<tr><td><p>商品説明：<%= @product.introduction %></p></td></tr>
 				<tr><td><p>ジャンル：<%= @product.genre.name %></p></td></tr>
 				<tr><td><p>価格：<%= addTax(@product.price) %>円(税込価格)</p></td></tr>
+				<tr><td><p>在庫数： <%= @product.stock %></p></td></tr>
 				<tr>
 					<td>
 						<p>販売ステータス：
