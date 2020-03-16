@@ -20,6 +20,7 @@
 				<th>Id</th>
 				<th>画像</th>
 				<th>商品名</th>
+				<th>ジャンル</th>
 				<th>販売ステータス</th>
 				<th></th>
 			</tr>
@@ -28,6 +29,7 @@
 					<td><p><%= product.id %></p></td>
 					<td><p><%= attachment_image_tag product, :image, :fill, 50, 50 %></p></td>
 					<td><p><%= product.name %></p></td>
+					<td><p><%= product.genre.name %></p></td>
 					<td>
 						<% if product.is_stopped? %>
 							<span style = "background-color: #FF0000; " class="badge">販売停止</span>
