@@ -19,7 +19,7 @@
 				<span class="badge" style ="background-color: green">販売停止</span>
 			<% end %>
 			<% if @product.stock  >  0 %>
-				<%= form_for(@order,url:orders_path) do |f| %>
+				<%= form_for(@cart_item,url:cart_items_path) do |f| %>
 					<%= f.hidden_field :product_id %>
 					<% if @product.is_stopped == false %>
 						<%= f.submit "購入する" %>

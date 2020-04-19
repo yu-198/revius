@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
 
   def show
   	@product = Product.find(params[:id])
-	  @order = Order.new(product_id: @product.id)
+	  @cart_item = CartItem.new(product_id: @product.id)
   end
 
   private
